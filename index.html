@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ほしいものガイド</title>
+<meta name="description" content="楽天市場のおすすめ商品を紹介する「ほしいものガイド」。気になる見出しをタップすると、くわしい紹介が見られます。">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{--bg:#fff;--tx:#1a1a1a;--sub:#7d7d7d;--soft:#f1f0ee;
+--san:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121212;--tx:#eee;--sub:#9a9a9a;--soft:#232323}}
+:root[data-theme="dark"]{--bg:#121212;--tx:#eee;--sub:#9a9a9a;--soft:#232323}
+:root{--c0:#c2255c;--c1:#1c7ed6;--c2:#2b8a3e;--c3:#d9480f;--c4:#7048e8;--c5:#0c8599}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--c0:#ff7aa2;--c1:#74b9ff;--c2:#69db7c;--c3:#ffa36c;--c4:#b197fc;--c5:#66d9e8}}
+:root[data-theme="dark"]{--c0:#ff7aa2;--c1:#74b9ff;--c2:#69db7c;--c3:#ffa36c;--c4:#b197fc;--c5:#66d9e8}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 15px/1.8 var(--san);-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:3px solid #f2b705;outline-offset:2px}
+.w{max-width:640px;margin:0 auto;padding:0 18px}
+.mast{padding:22px 0 0;font-size:18px;font-weight:700;letter-spacing:.08em}
+.bar{display:flex;flex-wrap:wrap;gap:2px 20px;margin:14px 0 0;font-size:13px}
+.bar a{padding:6px 0;text-decoration:underline;text-underline-offset:4px}
+.bar.bt{margin-top:36px}
+.item{margin-top:22px}
+.item h1{margin:0;font-size:20px;font-weight:700;line-height:1.6}
+.pr{margin-left:8px;padding:1px 7px;border-radius:3px;background:var(--soft);color:var(--sub);font-size:11px;font-weight:400;vertical-align:middle}
+.text{margin:14px 0 0;line-height:1.95;white-space:pre-wrap}
+.item img{display:block;width:300px;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;background:var(--soft);margin:18px auto 0}
+.btn{display:block;width:300px;max-width:100%;margin:20px auto 12px;padding:14px;background:var(--tx);color:var(--bg);text-align:center;font-size:15px;font-weight:700;border-radius:6px}
+.note{color:var(--sub);font-size:12px;line-height:1.85;margin:0}
+.lh{margin:44px 0 0;color:var(--sub);font-size:13px}
+.hl{margin-top:4px}
+.hl a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:16px;font-weight:700;line-height:1.55}
+.hl a::after{content:"›";color:var(--sub);font-weight:400;font-size:20px}
+.hero{display:block;width:260px;max-width:78%;height:auto;margin:20px auto 0}
+.ttl{margin:22px 0 0;font-size:20px;font-weight:700}
+.info{margin:6px 0 0}.info dt{margin-top:20px;color:var(--sub);font-size:13px}.info dd{margin:2px 0 0;font-size:16px;line-height:1.8}
+.fh{margin:40px 0 0;font-size:17px;font-weight:700}
+.cf label{display:block;margin-top:16px;color:var(--sub);font-size:13px}
+.cf input:not([type=hidden]),.cf textarea{display:block;width:100%;margin-top:6px;padding:12px;border:0;border-radius:6px;background:var(--soft);color:var(--tx);font:inherit;font-size:16px}
+.cf textarea{resize:vertical;line-height:1.7}
+.cf button{display:block;width:300px;max-width:100%;margin:22px 0 12px;padding:14px;border:0;border-radius:6px;background:var(--tx);color:var(--bg);font:inherit;font-size:15px;font-weight:700}
+.cf button:disabled{opacity:.5}
+.pol h2{margin:28px 0 0;font-size:16px;font-weight:700;line-height:1.6}.pol p{margin:8px 0 0;line-height:1.95}.pol a{color:var(--tx);font-weight:700}
+.intro{margin:14px 0 0;color:var(--sub);font-size:14px;line-height:1.9;text-align:center}
+.lp{margin-top:56px}.lp h2{margin:44px 0 0;font-size:18px;font-weight:700;line-height:1.6}.lp h2:first-child{margin-top:0}
+.lp h3{margin:22px 0 0;font-size:15px;font-weight:700;line-height:1.6}.lp p{margin:6px 0 0;line-height:1.95}
+.lp ul,.lp ol{margin:10px 0 0;padding-left:1.4em;line-height:1.95}.lp li{margin-top:4px}
+.lp details{margin-top:10px}.lp summary{cursor:pointer;padding:6px 0;font-weight:700;line-height:1.7}
+.lp .thx{margin-top:36px;color:var(--sub);font-size:14px;text-align:center}
+.empty{margin:40px 0;color:var(--sub)}
+footer{margin-top:48px;padding:0 0 48px;color:var(--sub);font-size:12px;line-height:1.95}
+footer a{color:var(--tx);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+</style></head><body>
+<div class="w"><div class="mast"><a href="#/">ほしいものガイド</a></div></div>
+<main id="app"></main>
+<footer><div class="w">
+<p><b>【ご注意・免責事項】</b><br>当サイトはアフィリエイト広告を利用しています。掲載商品のご購入は、リンク先の販売サイトでお客様ご自身の判断と責任で行ってください。商品の品質・価格・在庫・サイズ感・配送・返品、その他購入に関するトラブルや損害について、運営者は一切の責任を負いません。掲載内容は変更・終了している場合があります。必ずリンク先で最新情報をご確認ください。</p>
+<p><a href="#/about">運営者情報</a>　　<a href="#/privacy">プライバシーポリシー</a></p>
+<p><a href="#/contact">連絡先</a></p>
+<p>© <span id="yr">2026</span> ほしいものガイド</p></div></footer>
+<script>
+const SHEET_CSV_URL = "";
+// スプレッドシート列: 番号（表示しない） / 公開・非公開（非公開で非表示） / 見出し / 誘導文 / 楽天のコード（HTMLをそのまま貼る）
+// 1行目が見出し行、2行目以降が商品。いちばん上の商品がホームに大きく表示されます。
+const SAMPLE = [
+["見出しの例1","誘導文の例です。スプレッドシートを設定すると、ここに実際の内容が表示されます。\n\n誘導文が長くなっても、画像の上にそのまま全文が表示されます。"],
+["見出しの例2","誘導文の例です。"],
+["見出しの例3","誘導文の例です。"],
+["見出しの例4","誘導文の例です。"]
+].map((r,i)=>({id:"s"+i,title:r[0],text:r[1],img:"",url:"#"}));
+function parseCSV(t){const rows=[];let r=[],c="",q=false;for(let i=0;i<t.length;i++){const ch=t[i];
+ if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}
+ else if(ch=='"')q=true;else if(ch==","){r.push(c);c=""}
+ else if(ch=="\n"||ch=="\r"){if(ch=="\r"&&t[i+1]=="\n")i++;r.push(c);rows.push(r);r=[];c=""}else c+=ch}
+ if(c||r.length){r.push(c);rows.push(r)}return rows}
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const safeUrl=u=>/^https?:\/\//.test(u)||u==="#"?u:"#";
+const BLANK="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="#dedbd7"/></svg>');
+const fixImg=u=>{u=(u||"").trim();if(/^https?:\/\/(thumbnail|tshop)\.image\.rakuten\.co\.jp\//.test(u)&&!/[?&]_ex=/.test(u))u+=(u.includes("?")?"&":"?")+"_ex=300x300";return u};
+function parseCode(s){s=(s||"").trim();if(/^https?:\/\/\S+$/.test(s))return{url:s,img:""};
+ const un=t=>t.replace(/&amp;/g,"&");let url="#",img="";
+ const a=s.match(/<a\s[^>]*href\s*=\s*["']([^"']+)["']/i);if(a)url=un(a[1]);
+ for(const t of s.match(/<img\s[^>]*>/gi)||[]){if(/(width|height)\s*=\s*["']?1["']?[\s>\/]/i.test(t))continue;const m=t.match(/src\s*=\s*["']([^"']+)["']/i);if(m){img=fixImg(un(m[1]));break}}
+ return{url,img}}
+let ITEMS=[];
+async function load(){
+ if(SHEET_CSV_URL){try{const res=await fetch(SHEET_CSV_URL,{cache:"no-store"});const rows=parseCSV(await res.text()).slice(1);
+  ITEMS=rows.map((r,i)=>({r,i})).filter(({r})=>r[2]&&!/^(×|x|非公開)$/i.test((r[1]||"").trim())).map(({r,i})=>{const p=parseCode(r[4]);return{id:"i"+i,title:r[2],text:r[3]||"",img:p.img,url:p.url}});
+  return}catch(e){}}
+ ITEMS=SAMPLE}
+const TOP=`<a href="#" onclick="window.scrollTo(0,0);return false">ページのトップへ</a>`;
+const LST=`<a href="#list" onclick="document.getElementById('list').scrollIntoView({behavior:'smooth'});return false">見出し一覧へ</a>`;
+const bar=(home,b)=>`<div class="bar${b?" bt":""}">${home?"":`<a href="#/">ホームに戻る</a>`}${LST}${TOP}</div>`;
+const ILL=`<svg class="hero" viewBox="0 0 320 200" role="img" aria-label="ショッピングのイラスト" xmlns="http://www.w3.org/2000/svg"><ellipse cx="160" cy="182" rx="135" ry="11" fill="#000" opacity=".08"/><path d="M48 80h88l8 98H40z" fill="#f4a3b9"/><path d="M72 80c0-26 40-26 40 0" fill="none" stroke="#c2255c" stroke-width="5" stroke-linecap="round"/><circle cx="72" cy="94" r="4" fill="#fff"/><circle cx="112" cy="94" r="4" fill="#fff"/><rect x="150" y="108" width="96" height="70" rx="6" fill="#74b0f0"/><rect x="144" y="92" width="108" height="20" rx="5" fill="#4f93e0"/><rect x="188" y="92" width="20" height="86" fill="#ffd45a"/><path d="M198 92c-32-36-46 0-8 0zM198 92c32-36 46 0 8 0z" fill="#ffd45a"/><path d="M252 114h46l5 64h-56z" fill="#8fd19e"/><path d="M264 114c0-15 22-15 22 0" fill="none" stroke="#2b8a3e" stroke-width="4" stroke-linecap="round"/><g fill="#ffc83d"><path d="M36 38l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path d="M284 40l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M150 36l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></g><path d="M226 54c-8-9-22 2-9 13l9 8 9-8c13-11-1-22-9-13z" fill="#ff7aa2"/></svg>`;
+const ABAR=b=>`<div class="bar${b?" bt":""}"><a href="#/">ホームに戻る</a>${TOP}</div>`;
+const FORM=`<h2 class="fh" id="cform">連絡先</h2><p class="note">入力した内容の取り扱いは、<a href="#/privacy" style="text-decoration:underline;text-underline-offset:4px">プライバシーポリシー</a>をご覧ください。</p><form id="cf" class="cf" action="https://formspree.io/f/xeaowndg" method="POST"><label>お名前<input name="name" required autocomplete="name"></label><label>メールアドレス<input type="email" name="email" required autocomplete="email" inputmode="email"></label><label>表題<input name="_subject" required placeholder="〇〇〇について"></label><label>内容<textarea name="message" rows="7" required></textarea></label><input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none"><button type="submit">送信する</button><p class="note">【送信したあとについて】<br>「送信する」を押すと、ページは切り替わらず、このボタンの下に「送信しました」と表示されます。入力した内容は消えます。ほかのページへ行くときは、表示された「ホームに戻る」、またはページ下の「ホームに戻る」を押してください。送信できなかったときは、「送信できませんでした」と表示されるので、入力した内容を確かめてもう一度押してください。</p><p id="cmsg" class="note" role="status"></p></form>`;
+function initForm(){const f=document.getElementById("cf");f.addEventListener("submit",async e=>{e.preventDefault();const m=document.getElementById("cmsg"),b=f.querySelector("button");b.disabled=true;m.textContent="送信中です…";
+ try{const r=await fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}});if(r.ok){f.reset();m.innerHTML='送信しました。ありがとうございました。<br><a href="#/" style="color:var(--tx);font-weight:700;text-decoration:underline;text-underline-offset:4px">ホームに戻る</a>'}else throw 0}
+ catch(_){m.textContent="送信できませんでした。時間をおいて、もう一度お試しください。"}b.disabled=false})}
+const POLICY=`<h1 class="ttl">プライバシーポリシー</h1><div class="pol">
+<p>地域情報室（以下「運営者」）は、「ほしいものガイド」（以下「当サイト」）における個人情報の取り扱いについて、以下のとおり定めます。</p>
+<h2>1. 取得する情報</h2><p>当サイトの「連絡先」フォームに入力していただく、お名前、メールアドレス、表題、内容を取得します。フォームを使わない限り、個人情報を取得することはありません。</p>
+<h2>2. 利用目的</h2><p>いただいた連絡への対応と、必要な返信のためにのみ使います。それ以外の目的には使いません。</p>
+<h2>3. 外部サービス（Formspree）の利用</h2><p>連絡先フォームの送受信には、米国のFormspree, Inc.が提供するフォーム送信サービス「Formspree」を利用しています。フォームに入力した内容は、Formspreeのサーバーで処理・保管されたうえで、運営者に届きます。Formspreeは米国を含む国外のサーバーで情報を取り扱う場合があります。Formspreeでの情報の取り扱いは、<a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:4px">Formspreeのプライバシーポリシー</a>に従います。フォームを送信された場合は、この取り扱いに同意いただいたものとします。</p>
+<h2>4. 第三者への提供</h2><p>法令に基づく場合を除き、いただいた個人情報を、ご本人の同意なく第三者に提供しません。なお、上記のFormspreeは、フォームの送受信に必要な範囲で情報を取り扱います。</p>
+<h2>5. アフィリエイト広告について</h2><p>当サイトは、楽天アフィリエイトを利用しています。商品リンクを押すと、楽天市場などのリンク先のサイトに移ります。リンク先でのクッキー等の取り扱いや、購入に関する情報は、<a href="https://privacy.rakuten.co.jp/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:4px">楽天グループのプライバシーポリシー</a>など、リンク先の運営者の定めに従います。当サイトでは、商品の購入手続きは行わず、購入者の情報も取得しません。購入に関して、運営者は一切の責任を負いません。</p>
+<h2>6. アクセス解析・公開環境について</h2><p>当サイトは、現在アクセス解析ツールを使用していません。また、当サイトは「GitHub Pages」で公開しているため、アクセス記録（IPアドレス等）がGitHub側で取り扱われる場合があります。詳しくは、<a href="https://docs.github.com/ja/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:4px">GitHubのプライバシーに関する声明</a>をご覧ください。</p>
+<h2>7. 開示・訂正・削除のご請求</h2><p>ご自身の情報の開示、訂正、削除をご希望の場合は、連絡先フォームからご連絡ください。ご本人であることを確認したうえで、対応します。Formspree上に保管された情報の削除については、Formspreeへの依頼が必要になる場合があります。</p>
+<h2>8. 運営者の情報について</h2><p>当サイトは個人運営のため、現在の世情から、運営者の個人情報は記載していません。</p>
+<h2>9. 改定について</h2><p>この内容は、必要に応じて見直し、変更することがあります。変更後は、このページに掲載します。</p>
+<p class="note">2026年10月14日 制定</p></div>`;
+function fixLinks(){const a=document.getElementById("app"),B=a.dataset.base;if(B===undefined)return;const ok=new Set((a.dataset.ids||"").split(","));
+ a.innerHTML=a.innerHTML.replace(/href="#\/item\/i(\d+)"/g,(m,n)=>ok.has(n)?`href="${B}item/${n}/"`:m).replace(/href="#\/"/g,`href="${B}"`)}
+const MERITS=[
+["家にいながら、ゆっくり選べる","お店まで出かけなくても、ソファでくつろぎながら商品を選べます。人混みや行列を気にせず、自分のペースで考えられるのは、ネットの買い物ならではです。"],
+["重いものも、かさばるものも玄関まで","水や飲み物、大きな家具や家電のように、持ち帰るのが大変なものも、配送で届けてもらえます。荷物を持って歩く手間が、ぐっと減ります。"],
+["いくつものお店を、かんたんに見比べられる","同じような商品でも、お店によって価格や送料、届くまでの日数が違うことがあります。画面を切り替えるだけで比べられるので、納得して選べます。"],
+["ほかの人のレビューが参考になる","実際に使った人の感想は、写真や説明だけでは分からない使い心地を知る手がかりになります。良い点だけでなく、気になる点も読むのがコツです。"],
+["好きな時間に買い物ができる","仕事帰りの夜でも、休日の朝でも、思い立ったときに注文できます。お店の営業時間を気にしなくてよいのは、忙しい毎日の味方です。"],
+["ポイントやセールでお得になることも","楽天市場では、購入に応じてポイントがたまる仕組みがあり、時期によってセールやキャンペーンも行われます。内容や条件は、お店や時期によって変わるので、くわしくはリンク先でご確認ください。"],
+["ギフトを贈りやすい","遠くに住む家族や友人にも、商品を選んで贈ることができます。お店によっては、包装やメッセージに対応していることもあります。"],
+["移動の時間と手間が省ける","買い物に出かける時間や、お店の中を探し回る手間がいりません。空いた時間を、家族との時間や自分の休息にあてられます。"]];
+const SCENES=[
+["忙しい平日に","仕事や家事の合間に、スマホで数分あれば注文できます。帰宅するころに届く、という使い方もできます。"],
+["雨や雪の日に","外に出るのがおっくうな日でも、必要なものを玄関まで届けてもらえます。"],
+["新生活の準備に","引っ越しや入学・就職の前は、そろえるものがたくさん。リストを作りながら、落ち着いて選べます。"],
+["季節の変わり目に","衣替えや、暑さ・寒さ対策の準備を、早めに進めておけます。"],
+["大切な人への贈り物に","相手の好みや暮らしを思い浮かべながら、じっくり選べます。"],
+["まとめ買いをしたいときに","飲み物や日用品のように、重くて何度も使うものは、ネットでまとめて注文すると楽です。"]];
+const FAQ=[
+["このサイトで、商品を買えますか？","当サイトでは購入の手続きはできません。「商品ページを見る」を押すと、楽天市場の商品ページに移ります。購入は、そちらでお手続きください。"],
+["価格や在庫は、いつも同じですか？","価格や在庫、送料は、変わることがあります。ご購入の前に、必ずリンク先の商品ページで、最新の情報をご確認ください。"],
+["このサイトを使うのに、お金はかかりますか？","いいえ、無料でご覧いただけます。リンクから購入されると、運営者に紹介料が入ることがありますが、お客さまのお支払いが増えることはありません。"],
+["紹介している内容は、いつも最新ですか？","掲載したあとで、商品の価格や仕様、販売の状況が変わることがあります。最新の情報は、リンク先の商品ページでご確認ください。"],
+["商品に問題があったときは、どうすればいいですか？","購入されたお店に、直接ご連絡ください。当サイトでは、購入の手続きや、返品・交換の対応は行っていません。"],
+["新しい商品は増えますか？","ときどき、新しい商品を追加していきます。気が向いたときに、のぞいてみてください。"],
+["ご意見やご要望は、どこに送ればいいですか？","運営者情報のページにある「連絡先」から、お送りください。お返事をお約束するものではありませんが、今後の参考にさせていただきます。"]];
+const INTRO=`<p class="intro">ようこそ、ほしいものガイドへ。<br>毎日の買い物が、ちょっと楽しくなる商品を紹介しています。<br>気になる見出しをタップして、ゆっくり見ていってください。</p>`;
+const LI=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+const MORE=`<div class="lp"><h2>ネットで買い物する、8つのいいところ</h2>${MERITS.map((m,i)=>`<h3 style="color:var(--c${i%6})">${m[0]}</h3><p>${m[1]}</p>`).join("")}
+<h2>こんなとき、ネットの買い物が便利です</h2>${SCENES.map((m,i)=>`<h3 style="color:var(--c${(i+2)%6})">${m[0]}</h3><p>${m[1]}</p>`).join("")}
+<h2>失敗しない、商品の選び方のコツ</h2>${LI(["レビューは、星の数だけでなく、内容まで読んでみましょう。","サイズ、素材、使い方を、説明ページでしっかり確認しましょう。","商品の価格だけでなく、送料と届くまでの日数も見ておきましょう。","お店の評価や、返品・交換の決まりも、買う前にチェックしておくと安心です。","似た商品をいくつか見比べて、違いを知っておきましょう。","置き場所や使う場面を思い浮かべて、本当に必要かを一度考えてみましょう。"])}
+<h2>お得に買うためのヒント</h2><p>お得になる条件は、お店や時期によって変わります。次の点を、購入の前に見ておくと安心です。</p>${LI(["送料がかかるかどうか。一定の金額以上で送料が無料になるお店もあります。","クーポンやキャンペーンが、使える商品かどうか。","ポイントがたまる条件と、使える期限。","同じお店で必要なものをまとめると、送料が割安になることがあります。","セールを待つ方法もありますが、必要なときに買うほうがよい場合もあります。"])}
+<h2>注文する前の、チェックリスト</h2>${LI(["商品名、サイズ、色、数量は合っていますか。","届け先の住所と、受け取れる日時は合っていますか。","支払い方法と、合計金額を確認しましたか。","返品・交換のルールを読みましたか。","注文後に届く確認のメールは、保管しておきましょう。"])}
+<h2>商品が届いたあとのこと</h2><p>商品が届いたら、まず中身を確認しましょう。傷や、注文と違うところがあれば、早めにお店へ連絡するのが安心です。返品や交換には期限があることが多いので、箱や説明書、保証書は、しばらく取っておきましょう。</p>
+<h2>ギフトを選ぶときのヒント</h2>${LI(["相手の好みや、暮らしぶりを思い浮かべてみましょう。","予算と、相手が受け取りやすい大きさや量を考えましょう。","食べものは、日持ちや、お届けの日にちも確かめましょう。","包装やメッセージカードに対応しているかは、お店によって違います。"])}
+<h2>買い物で、ありがちな失敗</h2><h3>写真と、実物の印象が違った</h3><p>レビューに載っている、購入者の写真も見ておくと、実際の姿が分かりやすくなります。</p><h3>サイズが合わなかった</h3><p>手持ちの服や物のサイズを測って、商品の表と見比べてみましょう。</p><h3>送料に、あとから気づいた</h3><p>商品の価格だけで決めず、合計金額まで見てから注文しましょう。</p><h3>つい買いすぎてしまった</h3><p>気になる商品は、いったんカートに入れて、ひと晩おいてみるのもおすすめです。</p>
+<h2>このサイトの使い方</h2><ol><li>見出し一覧から、気になる商品の見出しをタップします。</li><li>誘導文と画像で、くわしい紹介を読みます。</li><li>気に入ったら「商品ページを見る」を押して、楽天市場のページへ。価格や在庫を確かめて、ご自身で購入をお決めください。</li></ol>
+<h2>このサイトについて</h2><p>「ほしいものガイド」は、気になる商品を、見出しと紹介文でまとめて紹介する、個人運営のサイトです。楽天市場の商品を扱っており、アフィリエイト広告を利用しています。掲載している内容は、変わることがあります。</p>
+<h2>よくあるご質問</h2>${FAQ.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}
+<p class="thx">ここまで読んでいただき、ありがとうございます。ほしいものが見つかったら、うれしいです。ときどき、のぞきに来てください。</p></div>`;
+function route(hh){
+ const h=(typeof hh==="string"&&hh)||location.hash.slice(1)||"/",app=document.getElementById("app");window.scrollTo(0,0);
+ if(h==="/privacy"){document.title="プライバシーポリシー｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}${POLICY}${ABAR(1)}</div>`;return}
+ if(h==="/about"||h==="/contact"){document.title="運営者情報｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}<h1 class="ttl">運営者情報</h1><dl class="info"><dt>運営者</dt><dd>地域情報室</dd><dt>サイト名</dt><dd>ほしいものガイド</dd><dt>個人情報について</dt><dd>個人運営につき、現在の世情から個人情報は記載していません。</dd></dl>${FORM}${ABAR(1)}</div>`;initForm();if(h==="/contact")document.getElementById("cform").scrollIntoView();return}
+ if(!ITEMS.length){app.innerHTML=`<div class="w"><p class="empty">掲載準備中です。</p></div>`;return}
+ const m=h.match(/^\/item\/(.+)/),it=(m&&ITEMS.find(i=>i.id===m[1]))||ITEMS[0],home=it===ITEMS[0]&&!m;
+ document.title=(home?"":it.title+"｜")+"ほしいものガイド";
+ app.innerHTML=`<div class="w">${home?ILL+INTRO:""}${bar(home)}
+ <article class="item"><h1 style="color:var(--c${ITEMS.indexOf(it)%6})">${esc(it.title)}<span class="pr">PR</span></h1><p class="text">${esc(it.text)}</p><img src="${esc(it.img?safeUrl(it.img):BLANK)}" alt="${esc(it.title)}" width="300" height="300" onerror="this.onerror=null;this.src='${BLANK}'"><a class="btn" href="${esc(safeUrl(it.url))}" target="_blank" rel="sponsored noopener">商品ページを見る</a><p class="note">リンク先は広告（アフィリエイト）です。購入はご自身の判断と責任でお願いします。運営者は一切責任を負いません。</p></article>
+ <p class="lh" id="list">見出し一覧</p><nav class="hl">${ITEMS.filter(x=>x!==it).map(x=>`<a href="#/item/${x.id}" style="color:var(--c${ITEMS.indexOf(x)%6})">${esc(x.title)}</a>`).join("")}</nav>
+ ${home?MORE:""}${bar(home,1)}</div>`}
+document.getElementById("yr").textContent=new Date().getFullYear();
+window.addEventListener("hashchange",()=>{route();fixLinks()});
+load().then(()=>{const a=document.getElementById("app"),B=a.dataset.base;
+ if(B===undefined){route();return}
+ if(location.hash){route();fixLinks();return}
+ const id=a.dataset.item;
+ if(id&&!ITEMS.some(x=>x.id===id)){location.replace(B);return}
+ const y=window.scrollY;route(id?"/item/"+id:"/");fixLinks();window.scrollTo(0,y)});
+</script></body></html>
