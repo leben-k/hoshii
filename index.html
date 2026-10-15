@@ -54,6 +54,7 @@ a:focus-visible{outline:3px solid #f2b705;outline-offset:2px}
 .lp ul,.lp ol{margin:10px 0 0;padding-left:1.4em;line-height:1.95}.lp li{margin-top:4px}
 .lp details{margin-top:10px}.lp summary{cursor:pointer;padding:6px 0;font-weight:700;line-height:1.7}
 .lp .thx{margin-top:36px;color:var(--sub);font-size:14px;text-align:center}
+.ck{margin-top:20px;line-height:1.8;word-break:break-all}.ck img{display:block;width:120px;height:120px;object-fit:cover;margin:8px 0 2px;background:var(--soft)}.ck span{display:block;font-weight:700}.ck small{display:block;color:var(--sub);font-size:12px;line-height:1.6}
 .empty{margin:40px 0;color:var(--sub)}
 footer{margin-top:48px;padding:0 0 48px;color:var(--sub);font-size:13px;line-height:1.95}
 footer a{color:var(--tx);font-weight:700;text-decoration:underline;text-underline-offset:3px}
@@ -94,7 +95,7 @@ footer{font-size:14px}
 <p><a href="#/contact">連絡先</a></p>
 <p>© <span id="yr">2026</span> ほしいものガイド</p></div></footer>
 <script>
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-eR_I5fJjNWAcuKhTkijVo8Lh7wGyl8QpMZTMo3p-effMCB6LeoFyid3-EBQ66QmJEsWxr2a2UDno/pub?gid=425960704&single=true&output=csv";
+const SHEET_CSV_URL = "";
 // スプレッドシート列: 番号（表示しない） / 公開・非公開（非公開で非表示） / 見出し / 誘導文 / 楽天のコード（HTMLをそのまま貼る） / 画像URL（任意）
 // 1行目が見出し行、2行目以降が商品。いちばん上の商品がホームに大きく表示されます。
 const SAMPLE = [
@@ -112,7 +113,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"
 const safeUrl=u=>/^https?:\/\//.test(u)||u==="#"?u:"#";
 const BLANK="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="#dedbd7"/></svg>');
 const fixImg=u=>{u=(u||"").trim();if(u.startsWith("//"))u="https:"+u;if(/^http:\/\/[^\/]*rakuten\.co\.jp\//.test(u))u=u.replace("http://","https://");if(/^https?:\/\/(thumbnail|tshop)\.image\.rakuten\.co\.jp\//.test(u)&&!/[?&]_ex=/.test(u))u+=(u.includes("?")?"&":"?")+"_ex=300x300";return u};
-function parseCode(s){s=(s||"").trim();
+function parseCode(s){s=(s||"").trim().replace(/[“”＂]/g,'"').replace(/[‘’]/g,"'");if(/&lt;\s*(a|img)\b/i.test(s))s=s.replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'");
  if(/^https?:\/\/\S+$/.test(s))return /\.(jpe?g|png|gif|webp)(\?|$)/i.test(s)?{url:"#",img:fixImg(s)}:{url:s,img:""};
  const un=t=>t.replace(/&amp;/g,"&");let url="#",img="";
  const a=s.match(/<a\s[^>]*href\s*=\s*["']([^"']+)["']/i);if(a)url=un(a[1]);
@@ -120,10 +121,18 @@ function parseCode(s){s=(s||"").trim();
  if(!img){const m=s.match(/(?:https?:)?\/\/[^\s"'<>]+\.(?:jpe?g|png|gif|webp)(?:\?[^\s"'<>]*)?/i);if(m)img=fixImg(un(m[0]))}
  return{url,img}}
 let ITEMS=[];
-let LOADED=false;
+function imgFail(el){const n=+(el.dataset.n||0);el.dataset.n=n+1;
+ if(n===0){const u=el.src.replace(/([?&])_ex=300x300&?/,"$1").replace(/[?&]$/,"");if(u!==el.src){el.src=u;return}}
+ if(n<=1){el.referrerPolicy="strict-origin-when-cross-origin";const u=el.src;el.removeAttribute("src");el.src=u;return}
+ el.onerror=null;el.src=BLANK}
+let LOADED=false,RAW=[];
+function imgFromRaw(raw,p){if(!raw)return p.img;const t=parseCode(raw);if(t.img)return t.img;
+ if(!/<a\b|<img\b|href\s*=/i.test(raw)){const m=raw.replace(/[“”＂]/g,'"').match(/(?:https?:)?\/\/[^\s"'<>]+/);if(m)return fixImg(m[0].replace(/&amp;/g,"&"))}
+ return p.img}
+function rowItem(r,i){const p=parseCode(r[4]),raw=(r[5]||"").trim(),img=imgFromRaw(raw,p);return{id:"i"+i,title:r[2],text:r[3]||"",img,url:p.url!=="#"?p.url:(/<a\s/i.test(raw)?parseCode(raw).url:"#")}}
 async function load(){
- if(SHEET_CSV_URL){try{const res=await fetch(SHEET_CSV_URL,{cache:"no-store"});if(!res.ok)throw new Error("HTTP "+res.status);const rows=parseCSV((await res.text()).replace(/^\uFEFF/,"")).slice(1);
-  ITEMS=rows.map((r,i)=>({r,i})).filter(({r})=>r[2]&&!/^(×|x|非公開)$/i.test((r[1]||"").trim())).map(({r,i})=>{const p=parseCode(r[4]),raw=(r[5]||"").trim(),img=raw?(/^(https?:)?\/\/\S+$/.test(raw)?fixImg(raw):(parseCode(raw).img||p.img)):p.img;return{id:"i"+i,title:r[2],text:r[3]||"",img,url:p.url!=="#"?p.url:(/<a\s/i.test(raw)?parseCode(raw).url:"#")}});
+ if(SHEET_CSV_URL){try{const res=await fetch(SHEET_CSV_URL,{cache:"no-store"});if(!res.ok)throw new Error("HTTP "+res.status);const rows=parseCSV((await res.text()).replace(/^\uFEFF/,"")).slice(1);RAW=rows;
+  ITEMS=rows.map((r,i)=>({r,i})).filter(({r})=>r[2]&&!/^(×|x|非公開)$/i.test((r[1]||"").trim())).map(({r,i})=>rowItem(r,i));
   LOADED=true;return}catch(e){}ITEMS=[];return}
  ITEMS=SAMPLE}
 const TOP=`<a href="#" onclick="window.scrollTo(0,0);return false">ページのトップへ</a>`;
@@ -189,13 +198,14 @@ const MORE=`<div class="lp"><h2>ネットで買い物する、8つのいいと�
 <p class="thx">ここまで読んでいただき、ありがとうございます。ほしいものが見つかったら、うれしいです。ときどき、のぞきに来てください。</p></div>`;
 function route(hh){
  const h=(typeof hh==="string"&&hh)||location.hash.slice(1)||"/",app=document.getElementById("app");window.scrollTo(0,0);
+ if(h==="/check"){document.title="表示チェック｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}<h1 class="ttl">表示チェック</h1><p class="note">スプレッドシートの各行を、サイトがどう読み取ったかを表示します。画像が出ない行は、ここで原因が分かります。</p>${RAW.length?RAW.map((r,i)=>{if(!r[2])return"";const it=rowItem(r,i),hid=/^(×|x|非公開)$/i.test((r[1]||"").trim());return `<div class="ck"><b>${i+2}行目：${esc(it.title)}</b>${hid?"（非公開の行）":""}<br>商品ページへのリンク：${safeUrl(it.url)!=="#"?"取り出せました":"取り出せません"}<br>画像のアドレス：${it.img?"取り出せました":"取り出せません。「画像URL」の欄に画像のコードかアドレスを入れてください"}${it.img?`<img src="${esc(safeUrl(it.img))}" referrerpolicy="no-referrer" width="120" height="120" onload="this.nextElementSibling.textContent='画像の表示：できました'" onerror="this.nextElementSibling.textContent='画像の表示：できませんでした。アドレスは取り出せましたが、画像を読み込めません'"><span>画像の表示：確認中</span><small>${esc(it.img)}</small>`:""}</div>`}).join(""):`<p class="note">スプレッドシートを読み込めていません。</p>`}${ABAR(1)}</div>`;return}
  if(h==="/privacy"){document.title="プライバシーポリシー｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}${POLICY}${ABAR(1)}</div>`;return}
  if(h==="/about"||h==="/contact"){document.title="運営者情報｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}<h1 class="ttl">運営者情報</h1><dl class="info"><dt>運営者</dt><dd>地域情報室</dd><dt>サイト名</dt><dd>ほしいものガイド</dd><dt>個人情報について</dt><dd>個人運営につき、現在の世情から個人情報は記載していません。</dd></dl>${FORM}${ABAR(1)}</div>`;initForm();if(h==="/contact")document.getElementById("cform").scrollIntoView();return}
  if(!ITEMS.length){app.innerHTML=`<div class="w"><p class="empty">掲載準備中です。</p></div>`;return}
  const m=h.match(/^\/item\/(.+)/),it=(m&&ITEMS.find(i=>i.id===m[1]))||ITEMS[0],home=it===ITEMS[0]&&!m;
  document.title=(home?"":it.title+"｜")+"ほしいものガイド";
  app.innerHTML=`<div class="w">${home?ILL+INTRO:""}${bar(home)}
- <article class="item"><h1 style="color:var(--c${ITEMS.indexOf(it)%6})">${esc(it.title)}<span class="pr">PR</span></h1><p class="text">${esc(it.text)}</p><img src="${esc(it.img?safeUrl(it.img):BLANK)}" alt="${esc(it.title)}" width="300" height="300" onerror="this.onerror=null;this.src='${BLANK}'"><a class="btn" href="${esc(safeUrl(it.url))}" target="_blank" rel="sponsored noopener">商品ページを見る</a><p class="note">リンク先は広告（アフィリエイト）です。購入はご自身の判断と責任でお願いします。運営者は一切責任を負いません。</p></article>
+ <article class="item"><h1 style="color:var(--c${ITEMS.indexOf(it)%6})">${esc(it.title)}<span class="pr">PR</span></h1><p class="text">${esc(it.text)}</p><img src="${esc(it.img?safeUrl(it.img):BLANK)}" alt="${esc(it.title)}" width="300" height="300" referrerpolicy="no-referrer" onerror="imgFail(this)"><a class="btn" href="${esc(safeUrl(it.url))}" target="_blank" rel="sponsored noopener">商品ページを見る</a><p class="note">リンク先は広告（アフィリエイト）です。購入はご自身の判断と責任でお願いします。運営者は一切責任を負いません。</p></article>
  <p class="lh" id="list">見出し一覧</p><nav class="hl">${ITEMS.filter(x=>x!==it).map(x=>`<a href="#/item/${x.id}" style="color:var(--c${ITEMS.indexOf(x)%6})">${esc(x.title)}</a>`).join("")}</nav>
  ${home?MORE:""}${bar(home,1)}</div>`}
 document.getElementById("yr").textContent=new Date().getFullYear();
