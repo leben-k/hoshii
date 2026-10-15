@@ -1,7 +1,7 @@
 name: サイトを作って公開する
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   schedule:
     - cron: "0 * * * *"   # 1時間ごとにスプレッドシートを読み直します
   workflow_dispatch:
