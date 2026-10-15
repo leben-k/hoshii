@@ -94,7 +94,7 @@ footer{font-size:14px}
 <p><a href="#/contact">連絡先</a></p>
 <p>© <span id="yr">2026</span> ほしいものガイド</p></div></footer>
 <script>
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQzaE7MHp2Q9_jB2p33_GzswIn2PzrEBrHMdi7lYUv5SAXcxqEQCoRpAWmiZsl-z2PSdcskdzeTf-JO/pub?gid=628938019&single=true&output=csv";
+const SHEET_CSV_URL = "";
 // スプレッドシート列: 番号（表示しない） / 公開・非公開（非公開で非表示） / 見出し / 誘導文 / 楽天のコード（HTMLをそのまま貼る）
 // 1行目が見出し行、2行目以降が商品。いちばん上の商品がホームに大きく表示されます。
 const SAMPLE = [
@@ -111,11 +111,13 @@ function parseCSV(t){const rows=[];let r=[],c="",q=false;for(let i=0;i<t.length;
 const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 const safeUrl=u=>/^https?:\/\//.test(u)||u==="#"?u:"#";
 const BLANK="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="#dedbd7"/></svg>');
-const fixImg=u=>{u=(u||"").trim();if(/^https?:\/\/(thumbnail|tshop)\.image\.rakuten\.co\.jp\//.test(u)&&!/[?&]_ex=/.test(u))u+=(u.includes("?")?"&":"?")+"_ex=300x300";return u};
-function parseCode(s){s=(s||"").trim();if(/^https?:\/\/\S+$/.test(s))return{url:s,img:""};
+const fixImg=u=>{u=(u||"").trim();if(u.startsWith("//"))u="https:"+u;if(/^http:\/\/[^\/]*rakuten\.co\.jp\//.test(u))u=u.replace("http://","https://");if(/^https?:\/\/(thumbnail|tshop)\.image\.rakuten\.co\.jp\//.test(u)&&!/[?&]_ex=/.test(u))u+=(u.includes("?")?"&":"?")+"_ex=300x300";return u};
+function parseCode(s){s=(s||"").trim();
+ if(/^https?:\/\/\S+$/.test(s))return /\.(jpe?g|png|gif|webp)(\?|$)/i.test(s)?{url:"#",img:fixImg(s)}:{url:s,img:""};
  const un=t=>t.replace(/&amp;/g,"&");let url="#",img="";
  const a=s.match(/<a\s[^>]*href\s*=\s*["']([^"']+)["']/i);if(a)url=un(a[1]);
- for(const t of s.match(/<img\s[^>]*>/gi)||[]){if(/(width|height)\s*=\s*["']?1["']?[\s>\/]/i.test(t))continue;const m=t.match(/src\s*=\s*["']([^"']+)["']/i);if(m){img=fixImg(un(m[1]));break}}
+ for(const t of s.match(/<img\s[^>]*>/gi)||[]){if(/(width|height)\s*=\s*["']?1["']?[\s>\/]/i.test(t))continue;const m=t.match(/\ssrc\s*=\s*["']([^"']+)["']/i)||t.match(/data-(?:src|original)\s*=\s*["']([^"']+)["']/i);if(m){img=fixImg(un(m[1]));break}}
+ if(!img){const m=s.match(/(?:https?:)?\/\/[^\s"'<>]+\.(?:jpe?g|png|gif|webp)(?:\?[^\s"'<>]*)?/i);if(m)img=fixImg(un(m[0]))}
  return{url,img}}
 let ITEMS=[];
 async function load(){
