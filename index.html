@@ -94,8 +94,8 @@ footer{font-size:14px}
 <p><a href="#/contact">連絡先</a></p>
 <p>© <span id="yr">2026</span> ほしいものガイド</p></div></footer>
 <script>
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQzaE7MHp2Q9_jB2p33_GzswIn2PzrEBrHMdi7lYUv5SAXcxqEQCoRpAWmiZsl-z2PSdcskdzeTf-JO/pub?gid=628938019&single=true&output=csv";
-// スプレッドシート列: 番号（表示しない） / 公開・非公開（非公開で非表示） / 見出し / 誘導文 / 楽天のコード（HTMLをそのまま貼る）
+const SHEET_CSV_URL = "";
+// スプレッドシート列: 番号（表示しない） / 公開・非公開（非公開で非表示） / 見出し / 誘導文 / 楽天のコード（HTMLをそのまま貼る） / 画像URL（任意）
 // 1行目が見出し行、2行目以降が商品。いちばん上の商品がホームに大きく表示されます。
 const SAMPLE = [
 ["見出しの例1","誘導文の例です。スプレッドシートを設定すると、ここに実際の内容が表示されます。\n\n誘導文が長くなっても、画像の上にそのまま全文が表示されます。"],
@@ -120,10 +120,11 @@ function parseCode(s){s=(s||"").trim();
  if(!img){const m=s.match(/(?:https?:)?\/\/[^\s"'<>]+\.(?:jpe?g|png|gif|webp)(?:\?[^\s"'<>]*)?/i);if(m)img=fixImg(un(m[0]))}
  return{url,img}}
 let ITEMS=[];
+let LOADED=false;
 async function load(){
- if(SHEET_CSV_URL){try{const res=await fetch(SHEET_CSV_URL,{cache:"no-store"});const rows=parseCSV(await res.text()).slice(1);
-  ITEMS=rows.map((r,i)=>({r,i})).filter(({r})=>r[2]&&!/^(×|x|非公開)$/i.test((r[1]||"").trim())).map(({r,i})=>{const p=parseCode(r[4]);return{id:"i"+i,title:r[2],text:r[3]||"",img:p.img,url:p.url}});
-  return}catch(e){}}
+ if(SHEET_CSV_URL){try{const res=await fetch(SHEET_CSV_URL,{cache:"no-store"});if(!res.ok)throw new Error("HTTP "+res.status);const rows=parseCSV((await res.text()).replace(/^\uFEFF/,"")).slice(1);
+  ITEMS=rows.map((r,i)=>({r,i})).filter(({r})=>r[2]&&!/^(×|x|非公開)$/i.test((r[1]||"").trim())).map(({r,i})=>{const p=parseCode(r[4]),raw=(r[5]||"").trim(),img=raw?(/^(https?:)?\/\/\S+$/.test(raw)?fixImg(raw):(parseCode(raw).img||p.img)):p.img;return{id:"i"+i,title:r[2],text:r[3]||"",img,url:p.url!=="#"?p.url:(/<a\s/i.test(raw)?parseCode(raw).url:"#")}});
+  LOADED=true;return}catch(e){}ITEMS=[];return}
  ITEMS=SAMPLE}
 const TOP=`<a href="#" onclick="window.scrollTo(0,0);return false">ページのトップへ</a>`;
 const LST=`<a href="#list" onclick="document.getElementById('list').scrollIntoView({behavior:'smooth'});return false">見出し一覧へ</a>`;
@@ -201,6 +202,7 @@ document.getElementById("yr").textContent=new Date().getFullYear();
 window.addEventListener("hashchange",()=>{route();fixLinks()});
 load().then(()=>{const a=document.getElementById("app"),B=a.dataset.base;
  if(B===undefined){route();return}
+ if(SHEET_CSV_URL&&!LOADED)return;
  if(location.hash){route();fixLinks();return}
  const id=a.dataset.item;
  if(id&&!ITEMS.some(x=>x.id===id)){location.replace(B);return}

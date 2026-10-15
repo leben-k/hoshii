@@ -12,18 +12,22 @@ const esc = s => String(s).replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;"
 let html = fs.readFileSync("index.html", "utf8");
 let code = html.match(/<script>([\s\S]*)<\/script>/)[1];
 if (process.env.SHEET_CSV_URL) code = code.replace(/const SHEET_CSV_URL = ".*?";/, `const SHEET_CSV_URL = ${JSON.stringify(process.env.SHEET_CSV_URL)};`);
-code = code.slice(0, code.lastIndexOf("load().then")) + "globalThis.__api={load,route,items:()=>ITEMS,hasSheet:()=>!!SHEET_CSV_URL};";
+code = code.slice(0, code.lastIndexOf("load().then")) + "globalThis.__api={load,route,items:()=>ITEMS,hasSheet:()=>!!SHEET_CSV_URL,loaded:()=>LOADED};";
 
 const els = {};
 const el = id => (els[id] ??= { innerHTML: "", textContent: "", href: "", hasAttribute: () => false, addEventListener() {} });
 const document = { title: "", getElementById: el };
 const location = { hash: "" };
 const window = { scrollTo() {}, addEventListener() {} };
-const myFetch = async u => u.startsWith("file:") ? { text: async () => fs.readFileSync(new URL(u), "utf8") } : fetch(u);
+const myFetch = async u => u.startsWith("file:") ? { ok: true, status: 200, text: async () => fs.readFileSync(new URL(u), "utf8") } : fetch(u);
 const ctx = vm.createContext({ document, location, window, fetch: myFetch, console });
 vm.runInContext(code, ctx);
 const api = ctx.__api;
 await api.load();
+if (api.hasSheet() && !api.loaded()) {
+  console.error("スプレッドシートを読み込めませんでした。前回のサイトを残すため、作り直しを中止します。");
+  process.exit(1);
+}
 const items = api.items();
 const live = api.hasSheet() && items.length > 0;
 const idList = live ? items.map(i => i.id.slice(1)).join(",") : "";
