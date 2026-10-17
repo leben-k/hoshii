@@ -29,8 +29,13 @@ if (api.hasSheet() && !api.loaded()) {
   process.exit(1);
 }
 const items = api.items();
+if (api.hasSheet() && items.length === 0) {
+  console.error("スプレッドシートから商品を1件も読み取れませんでした。前回のサイトを残すため、作り直しを中止します。");
+  process.exit(1);
+}
 const live = api.hasSheet() && items.length > 0;
 const idList = live ? items.map(i => i.id.slice(1)).join(",") : "";
+const preData = live ? `<script>window.__PRE=${JSON.stringify(items.map(i => ({ id: i.id, title: i.title, text: i.text, codeLink: i.codeLink, codeImg: i.codeImg, cat: i.cat, catManual: i.catManual }))).replace(/</g, "\\u003c")};</script>` : "";
 const year = new Date().getFullYear();
 const today = new Date().toISOString().slice(0, 10);
 html = html.replace('<span id="yr">2026</span>', `<span id="yr">${year}</span>`);
@@ -42,6 +47,7 @@ function render({ hash, url, title, desc, img, extra = "", itemId = "" }) {
   let out = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
     .replace(/<meta name="description"[^>]*>/, "")
     .replace("</head>", head + "</head>")
+    .replace("<script>", preData + "<script>")
     .replace('<main id="app"></main>', `<main id="app" data-pre data-base="${BASE}" data-ids="${idList}"${itemId ? ` data-item="${itemId}"` : ""}>${main}</main>`);
   if (!live) out = out.replace(/<meta name="robots"[^>]*>/, '<meta name="robots" content="noindex">');
   return out
