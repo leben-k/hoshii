@@ -46,7 +46,7 @@ function render({ hash, url, title, desc, img, extra = "", itemId = "" }) {
   if (!live) out = out.replace(/<meta name="robots"[^>]*>/, '<meta name="robots" content="noindex">');
   return out
     .replace(/href="#\/item\/i(\d+)"/g, (_, n) => `href="${BASE}item/${n}/"`)
-    .replace(/href="#\/(about|privacy|contact)"/g, (_, p) => `href="${BASE}#/${p}"`)
+    .replace(/href="#\/(about|privacy|contact|cat\/\d+)"/g, (_, p) => `href="${BASE}#/${p}"`)
     .replace(/href="#\/"/g, `href="${BASE}"`)
     .replace(/href="(favicon[^"]*|apple-touch-icon\.png)"/g, (_, f) => `href="${BASE}${f}"`);
 }
