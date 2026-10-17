@@ -125,7 +125,7 @@ html.inner .bn-sub{display:none}
 .chip .ci{font-size:20px;line-height:1}
 .chip .cn{flex:1;min-width:0;word-break:keep-all;overflow-wrap:anywhere}
 .chip small{display:block;margin-top:1px;color:var(--sub);font-size:12px;font-weight:700;white-space:nowrap}
-.chip.zero{border-color:#9cc8e3;color:#5a8fae;box-shadow:none}
+.chip.zero small{font-weight:400}
 .chip:active{transform:translateY(1px)}
 .adnote{margin:22px 0 0;padding:10px 14px;border-radius:10px;background:var(--soft);color:var(--tx);font-size:13px;line-height:1.8}
 .grp{margin-top:40px}
@@ -323,8 +323,8 @@ const FAQ=[
 ["商品に問題があったときは、どうすればいいですか？","購入されたお店に、直接ご連絡ください。当サイトでは、購入の手続きや、返品・交換の対応は行っていません。"],
 ["新しい商品は増えますか？","ときどき、新しい商品を追加していきます。気が向いたときに、のぞいてみてください。"],
 ["ご意見やご要望は、どこに送ればいいですか？","運営者情報のページにある「連絡先」から、お送りください。お返事をお約束するものではありませんが、今後の参考にさせていただきます。"]];
-const INTRO=`<p class="intro">ようこそ、ほしいものガイドへ。<br>毎日の買い物が、ちょっと楽しくなる商品を紹介しています。<br>カテゴリから、気になる商品を探してみてください。</p>`;
-const HOWTO=`<div class="lp how"><h2>このサイトの使い方</h2><ol><li>「カテゴリから探す」で、気になるカテゴリを選びます。「商品の見出し一覧」から探すこともできます。</li><li>紹介文の「続きを読む」を押すと、全文と商品の画像が開きます。</li><li>商品の画像や商品名のリンクから、楽天市場の商品ページを見ることができます。価格や在庫はそちらで確かめて、ご自身の判断でお決めください。</li></ol></div>`;
+const INTRO=`<p class="intro">ようこそ、ほしいものガイドへ。<br>毎日の買い物が、ちょっと楽しくなる商品を紹介しています。<br>下の「カテゴリから探す」から、気になるカテゴリを選んでください。</p>`;
+const HOWTO=`<div class="lp how"><h2>このサイトの使い方</h2><ol><li>「カテゴリから探す」で、気になるカテゴリを選びます。そのカテゴリの「商品の見出し一覧」と、商品の紹介が出ます。</li><li>紹介文の「続きを読む」を押すと、全文と商品の画像が開きます。</li><li>商品の画像や商品名のリンクから、楽天市場の商品ページを見ることができます。価格や在庫はそちらで確かめて、ご自身の判断でお決めください。</li></ol></div>`;
 const SCENE=`<div class="lp sc"><h2>こんなとき、ネットの買い物が便利です</h2>${SCENES.map((m,i)=>`<h3 style="color:var(--c${(i+2)%6})">${m[0]}</h3><p>${m[1]}</p>`).join("")}</div>`;
 const LI=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
 const MORE=`<div class="lp"><h2>ネットで買い物する、8つのいいところ</h2>${MERITS.map((m,i)=>`<h3 style="color:var(--c${i%6})">${m[0]}</h3><p>${m[1]}</p>`).join("")}
@@ -366,8 +366,7 @@ function route0(hh){setMode(true);
  setMode(false);document.title="ほしいものガイド";
  const groups=CATN.map((n,c)=>({c,li:ITEMS.filter(x=>x.cat===c)})).filter(g=>g.li.length);
  const toc=`<section class="toc" id="toc"><h2 class="lh">商品の見出し一覧</h2><p class="toc-h">見出しを押すと、下の本文のその見出しまで移動します。</p>${tocLi(groups.reduce((a,g)=>a.concat(g.li),[]))}</section>`;
- app.innerHTML=`<div class="w">${INTRO}${HOWTO}${chips}${SCENE}${toc}${NOTE}
- ${groups.map(g=>`<section class="grp"><div class="gh"><h2 style="color:var(--c${g.c%6})"><span aria-hidden="true">${CATI[g.c]}</span>${esc(CATN[g.c])}</h2><a href="#/cat/${g.c}">このカテゴリだけ見る</a></div><div class="cards">${g.li.map(card).join("")}</div></section>`).join("")}
+ app.innerHTML=`<div class="w">${INTRO}${HOWTO}${chips}${SCENE}
  ${MORE}${bar(true,1)}</div>`}
 function route(hh){route0(hh);try{initMore()}catch(e){}}
 document.getElementById("yr").textContent=new Date().getFullYear();
