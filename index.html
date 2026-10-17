@@ -232,7 +232,7 @@ function checkCode(s){s=String(s||"").trim();if(!s)return{ok:false,empty:true,wh
 function codeBlock(it){const out=[];
  for(const c of [it.codeImg,it.codeLink]){if(!c||out.some(o=>o.c===c))continue;out.push({c,r:checkCode(c)})}
  if(!out.length)return `<p class="rkph">（ここに楽天のリンクのコードが表示されます）</p>`;
- return `<p class="go"><span class="prl">PR</span> 下のリンクから、楽天市場の商品ページに移動します。</p>`+out.map(o=>o.r.ok?`<div class="rk">${o.c}</div>`:`<p class="rkng">この商品のリンクを表示できません。${esc(o.r.why)}。</p>`).join("")}
+ return `<p class="go">画像か商品名を押すと、楽天市場の商品ページが開きます。</p>`+out.map(o=>o.r.ok?`<div class="rk">${o.c}</div>`:`<p class="rkng">この商品のリンクを表示できません。${esc(o.r.why)}。</p>`).join("")}
 
 function toggleMore(b){const p=b.previousElementSibling,o=p.classList.toggle("open");b.textContent=o?"閉じる":"続きを読む";b.setAttribute("aria-expanded",o?"true":"false")}
 function initMore(){document.querySelectorAll(".clamp").forEach(p=>{const b=p.nextElementSibling;if(!b||!b.classList.contains("more-btn"))return;if(p.classList.contains("open")){b.hidden=false;return}const lh=parseFloat(getComputedStyle(p).lineHeight)||24;b.hidden=!(p.scrollHeight>p.clientHeight+lh*0.5)})}
