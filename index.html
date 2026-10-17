@@ -143,6 +143,7 @@ html.inner .bn-sub{display:none}
 .more-btn{display:inline-block;margin:8px 0 0;padding:4px 0;border:0;background:none;color:#0a7cbf;font:inherit;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .more-btn::after{content:" ▼";font-size:11px}
 .more-body{margin-top:4px}
+.card,.card *{overflow-anchor:none}
 .ct{color:inherit}
 .more-btn[aria-expanded="true"]::after{content:" ▲"}
 
@@ -237,7 +238,9 @@ function codeBlock(it){const out=[];
  const okc=out.filter(o=>o.r.ok).map(o=>o.c).join(""),hi=/<img\b(?![^>]*\b(?:width|height)\s*=\s*["']?1["'\s>])[^>]*>/i.test(okc),ht=/<a\b[^>]*>\s*[^<\s][^<]*<\/a>/i.test(okc),w=hi&&ht?"画像か商品名":hi?"画像":ht?"商品名":"";
  return (w?`<p class="go">${w}を押すと、楽天市場の商品ページが別の画面で開きます。</p>`:"")+out.map(o=>o.r.ok?`<div class="rk">${o.c}</div>`:`<p class="rkng">この商品のリンクを表示できません。${esc(o.r.why)}。</p>`).join("")}
 
-function toggleMore(b){const c=b.closest(".card"),p=c.querySelector(".clamp"),m=c.querySelector(".more-body"),o=p.classList.toggle("open");if(m)m.hidden=!o;b.textContent=o?"閉じる":"続きを読む";b.setAttribute("aria-expanded",o?"true":"false");if(!o)c.scrollIntoView({block:"nearest"})}
+function toggleMore(b){const c=b.closest(".card"),p=c.querySelector(".clamp"),m=c.querySelector(".more-body"),y0=p.getBoundingClientRect().top,o=p.classList.toggle("open");if(m)m.hidden=!o;b.textContent=o?"閉じる":"続きを読む";b.setAttribute("aria-expanded",o?"true":"false");
+ if(o){try{b.blur()}catch(e){}const fix=()=>{const d=p.getBoundingClientRect().top-y0;if(Math.abs(d)>1)window.scrollBy(0,d)};fix();requestAnimationFrame(()=>{fix();setTimeout(fix,120);setTimeout(fix,400)})}
+ else c.scrollIntoView({block:"nearest"})}
 function initMore(){document.querySelectorAll(".card").forEach(c=>{const p=c.querySelector(".clamp"),b=c.querySelector(".more-btn"),m=c.querySelector(".more-body");if(!p||!b)return;if(p.classList.contains("open")){b.hidden=false;return}const lh=parseFloat(getComputedStyle(p).lineHeight)||24,has=m&&m.querySelector(".rk,.rkng"),all=Math.round(p.scrollHeight/lh),n=Math.max(5,Math.ceil(all*0.6));p.style.setProperty("--lines",n>=all?999:n);b.hidden=!(has||n<all)})}
 try{document.fonts&&document.fonts.ready.then(()=>{try{initMore()}catch(e){}})}catch(e){}
 window.addEventListener("load",()=>{try{initMore()}catch(e){}});
