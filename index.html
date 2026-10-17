@@ -138,10 +138,12 @@ html.inner .bn-sub{display:none}
 .ct{margin:8px 0 0;font-size:18px;font-weight:700;line-height:1.55}
 .ct a{text-decoration:none}
 .card .text{margin-top:10px}
-.clamp{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.clamp{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:var(--lines,6);overflow:hidden}
 .clamp.open{display:block;-webkit-line-clamp:unset;overflow:visible}
 .more-btn{display:inline-block;margin:8px 0 0;padding:4px 0;border:0;background:none;color:#0a7cbf;font:inherit;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .more-btn::after{content:" ▼";font-size:11px}
+.more-body{margin-top:4px}
+.ct{color:inherit}
 .more-btn[aria-expanded="true"]::after{content:" ▲"}
 
 .ctag{display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:999px;background:#e7f4fb;color:#0a6fa8;font-size:12px;font-weight:700;line-height:1.5;text-decoration:none}
@@ -232,10 +234,11 @@ function checkCode(s){s=String(s||"").trim();if(!s)return{ok:false,empty:true,wh
 function codeBlock(it){const out=[];
  for(const c of [it.codeImg,it.codeLink]){if(!c||out.some(o=>o.c===c))continue;out.push({c,r:checkCode(c)})}
  if(!out.length)return `<p class="rkph">（ここに楽天のリンクのコードが表示されます）</p>`;
- return `<p class="go">画像か商品名を押すと、楽天市場の商品ページが開きます。</p>`+out.map(o=>o.r.ok?`<div class="rk">${o.c}</div>`:`<p class="rkng">この商品のリンクを表示できません。${esc(o.r.why)}。</p>`).join("")}
+ const okc=out.filter(o=>o.r.ok).map(o=>o.c).join(""),hi=/<img\b(?![^>]*\b(?:width|height)\s*=\s*["']?1["'\s>])[^>]*>/i.test(okc),ht=/<a\b[^>]*>\s*[^<\s][^<]*<\/a>/i.test(okc),w=hi&&ht?"画像か商品名":hi?"画像":ht?"商品名":"";
+ return (w?`<p class="go">${w}を押すと、楽天市場の商品ページが別の画面で開きます。</p>`:"")+out.map(o=>o.r.ok?`<div class="rk">${o.c}</div>`:`<p class="rkng">この商品のリンクを表示できません。${esc(o.r.why)}。</p>`).join("")}
 
-function toggleMore(b){const p=b.previousElementSibling,o=p.classList.toggle("open");b.textContent=o?"閉じる":"続きを読む";b.setAttribute("aria-expanded",o?"true":"false")}
-function initMore(){document.querySelectorAll(".clamp").forEach(p=>{const b=p.nextElementSibling;if(!b||!b.classList.contains("more-btn"))return;if(p.classList.contains("open")){b.hidden=false;return}const lh=parseFloat(getComputedStyle(p).lineHeight)||24;b.hidden=!(p.scrollHeight>p.clientHeight+lh*0.5)})}
+function toggleMore(b){const c=b.closest(".card"),p=c.querySelector(".clamp"),m=c.querySelector(".more-body"),o=p.classList.toggle("open");if(m)m.hidden=!o;b.textContent=o?"閉じる":"続きを読む";b.setAttribute("aria-expanded",o?"true":"false");if(!o)c.scrollIntoView({block:"nearest"})}
+function initMore(){document.querySelectorAll(".card").forEach(c=>{const p=c.querySelector(".clamp"),b=c.querySelector(".more-btn"),m=c.querySelector(".more-body");if(!p||!b)return;if(p.classList.contains("open")){b.hidden=false;return}const lh=parseFloat(getComputedStyle(p).lineHeight)||24,has=m&&m.querySelector(".rk,.rkng"),all=Math.round(p.scrollHeight/lh),n=Math.max(5,Math.ceil(all*0.6));p.style.setProperty("--lines",n>=all?999:n);b.hidden=!(has||n<all)})}
 try{document.fonts&&document.fonts.ready.then(()=>{try{initMore()}catch(e){}})}catch(e){}
 window.addEventListener("load",()=>{try{initMore()}catch(e){}});
 function imgFail(el){const n=+(el.dataset.n||0);el.dataset.n=n+1;
@@ -323,7 +326,7 @@ function route0(hh){setMode(true);
  if(h==="/about"||h==="/contact"){document.title="運営者情報｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}<h1 class="ttl">運営者情報</h1><dl class="info"><dt>運営者</dt><dd>地域情報室</dd><dt>サイト名</dt><dd>ほしいものガイド</dd><dt>個人情報について</dt><dd>個人運営につき、現在の世情から個人情報は記載していません。</dd></dl>${FORM}${ABAR(1)}</div>`;initForm();if(h==="/contact")document.getElementById("cform").scrollIntoView();return}
  const tagT=c=>`<a class="ctag" href="#/cat/${c}"><span aria-hidden="true">${CATI[c]}</span>${esc(CATN[c])}</a>`;
  const NOTE=`<p class="adnote">掲載している商品のリンク先は広告（アフィリエイト）です。購入はご自身の判断と責任でお願いします。運営者は一切責任を負いません。</p>`;
- const card=it=>`<article class="card">${tagT(it.cat)}<h3 class="ct"><a href="#/item/${it.id}" style="color:var(--c${it.cat%6})">${esc(it.title)}</a><span class="prl">PR</span></h3><p class="text clamp">${esc(it.text)}</p><button type="button" class="more-btn" hidden aria-expanded="false" onclick="toggleMore(this)">続きを読む</button>${codeBlock(it)}</article>`;
+ const card=it=>`<article class="card">${tagT(it.cat)}<h3 class="ct" style="color:var(--c${it.cat%6})">${esc(it.title)}<span class="prl">PR</span></h3><p class="text clamp">${esc(it.text)}</p><div class="more-body" hidden>${codeBlock(it)}</div><button type="button" class="more-btn" aria-expanded="false" onclick="toggleMore(this)">続きを読む</button></article>`;
  const cnt=c=>ITEMS.filter(x=>x.cat===c).length;
  const chips=`<section class="cats" id="cats"><h2 class="lh">カテゴリから探す</h2><div class="chips">${CATN.map((n,c)=>{const k=cnt(c);if(c===OTHER&&!k)return"";return `<a class="chip${k?"":" zero"}" href="#/cat/${c}"><span class="ci" aria-hidden="true">${CATI[c]}</span><span class="cn">${esc(n).replace(/・/g,"・<wbr>")}<small>${k?k+"件":"準備中"}</small></span></a>`}).join("")}</div></section>`;
  const mc=h.match(/^\/cat\/(\d+)/);
