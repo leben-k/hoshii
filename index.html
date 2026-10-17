@@ -168,6 +168,19 @@ html.inner .bn-sub{display:none}
 .card{padding-bottom:16px}
 .ctx{display:inline-block;max-width:100%;padding:6px 18px;border:2px solid currentColor;border-radius:28px;line-height:1.55;vertical-align:middle}
 .ct .prl,.item h1 .prl{margin:6px 0 0 8px}
+.toc{margin-top:30px}
+.toc-h{margin:8px 0 0;font-size:14px}
+.toc-c{display:flex;align-items:baseline;gap:6px;margin:18px 0 0;padding-bottom:4px;border-bottom:2px solid var(--soft);font-size:16px;line-height:1.5}
+.toc-c small{margin-left:auto;color:var(--sub);font-size:13px;font-weight:700}
+.toc-l{margin:4px 0 0;padding:0;list-style:none}
+.toc-l li a{display:flex;align-items:center;gap:10px;padding:11px 2px;border-bottom:1px solid var(--soft);font-size:15px;font-weight:700;line-height:1.55;text-decoration:none}
+.toc-l li a::after{content:"↓";margin-left:auto;color:var(--sub);font-weight:400}
+.totoc{display:inline-block;margin:10px 0 0 18px;color:#0a7cbf;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.card{scroll-margin-top:12px}
+.ct{scroll-margin-top:16px}
+.card.hit{animation:hit 1.6s ease-out}
+@keyframes hit{0%{box-shadow:0 0 0 4px #0a7cbf}100%{box-shadow:0 2px 10px rgba(0,0,0,.04)}}
+@media(prefers-reduced-motion:reduce){.card.hit{animation:none}}
 </style></head><body>
 <div class="sheet"><div class="w"><header class="bn"><a class="bn-in" href="#/" aria-label="ほしいものガイド（ホームへ）"><svg class="bn-art" viewBox="0 0 420 200" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g fill="#fff" opacity=".75"><ellipse cx="40" cy="40" rx="28" ry="10"/><ellipse cx="60" cy="33" rx="18" ry="9"/><ellipse cx="382" cy="46" rx="30" ry="11"/><ellipse cx="362" cy="38" rx="18" ry="9"/></g><path d="M0 168C70 150 140 178 210 165S350 152 420 168V200H0z" fill="#ffe3ec"/><path d="M0 184C80 170 150 194 230 182S360 172 420 186V200H0z" fill="#ffcfdd"/><g fill="none" stroke="#9c8a80" stroke-width="1.4" stroke-linecap="round"><path d="M46 113q-5 30 4 58"/><path d="M70 105q5 34-3 66"/><path d="M352 110q-5 30 4 60"/><path d="M376 102q5 34-2 66"/></g><ellipse cx="46" cy="94" rx="15" ry="19" fill="#ff7fa1"/><ellipse cx="41" cy="88" rx="3" ry="6" fill="#fff" opacity=".5"/><ellipse cx="70" cy="86" rx="14" ry="18" fill="#ffd43b"/><ellipse cx="65" cy="80" rx="3" ry="5" fill="#fff" opacity=".5"/><ellipse cx="352" cy="92" rx="15" ry="19" fill="#74c0fc"/><ellipse cx="347" cy="86" rx="3" ry="6" fill="#fff" opacity=".5"/><ellipse cx="376" cy="84" rx="14" ry="18" fill="#8fd19e"/><ellipse cx="371" cy="78" rx="3" ry="5" fill="#fff" opacity=".5"/><path d="M14 132h50l6 54H8z" fill="#ff9db8"/><path d="M27 132c0-17 24-17 24 0" fill="none" stroke="#d6336c" stroke-width="4" stroke-linecap="round"/><circle cx="29" cy="156" r="3" fill="#7a2a45"/><circle cx="49" cy="156" r="3" fill="#7a2a45"/><path d="M31 165q8 7 16 0" fill="none" stroke="#7a2a45" stroke-width="2.6" stroke-linecap="round"/><rect x="104" y="150" width="58" height="36" rx="5" fill="#5c9ce6"/><rect x="99" y="137" width="68" height="16" rx="4" fill="#3f86d9"/><rect x="126" y="137" width="14" height="49" fill="#ffd43b"/><path d="M133 137c-5-13-19-15-19-8 0 6 10 8 19 8zM133 137c5-13 19-15 19-8 0 6-10 8-19 8z" fill="#ffd43b"/><path d="M186 140h48l5 46h-58z" fill="#b197fc"/><path d="M199 140c0-15 22-15 22 0" fill="none" stroke="#6741d9" stroke-width="3.6" stroke-linecap="round"/><circle cx="202" cy="160" r="2.6" fill="#3b2a6b"/><circle cx="218" cy="160" r="2.6" fill="#3b2a6b"/><path d="M204 168q6 6 12 0" fill="none" stroke="#3b2a6b" stroke-width="2.4" stroke-linecap="round"/><path d="M262 138h46l5 48h-56z" fill="#8fd19e"/><path d="M274 138c0-14 22-14 22 0" fill="none" stroke="#2b8a3e" stroke-width="3.6" stroke-linecap="round"/><circle cx="277" cy="159" r="2.6" fill="#1f6b32"/><circle cx="293" cy="159" r="2.6" fill="#1f6b32"/><path d="M279 167q6 6 12 0" fill="none" stroke="#1f6b32" stroke-width="2.4" stroke-linecap="round"/><rect x="340" y="152" width="60" height="34" rx="5" fill="#ffa8c0"/><rect x="335" y="139" width="70" height="16" rx="4" fill="#ff7fa1"/><rect x="363" y="139" width="14" height="47" fill="#ffd43b"/><path d="M370 139c-5-13-19-15-19-8 0 6 10 8 19 8zM370 139c5-13 19-15 19-8 0 6-10 8-19 8z" fill="#ffd43b"/><g fill="#ffb700"><path d="M20 84l2.6 7 7 2.6-7 2.6-2.6 7-2.6-7-7-2.6 7-2.6z"/><path d="M404 96l2.4 6 6 2.4-6 2.4-2.4 6-2.4-6-6-2.4 6-2.4z"/><path d="M110 112l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M312 114l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g><path d="M246 116c-5-6-15 2-6 9l6 5 6-5c9-7-1-15-6-9z" fill="#ff6b8b"/><path d="M168 118c-4-5-12 1-5 7l5 4 5-4c7-6-1-12-5-7z" fill="#ff6b8b"/><g><rect x="150" y="104" width="8" height="4" rx="1" fill="#4dabf7" transform="rotate(30 154 106)"/><rect x="276" y="106" width="8" height="4" rx="1" fill="#f06595" transform="rotate(-25 280 108)"/><rect x="96" y="124" width="8" height="4" rx="1" fill="#51cf66" transform="rotate(50 100 126)"/><rect x="318" y="134" width="8" height="4" rx="1" fill="#fcc419" transform="rotate(20 322 136)"/><circle cx="206" cy="108" r="3.2" fill="#9775fa"/><circle cx="236" cy="132" r="3" fill="#f06595"/><circle cx="8" cy="118" r="3" fill="#4dabf7"/><circle cx="414" cy="130" r="3.2" fill="#51cf66"/></g></svg>
 <span class="bn-sign"><span class="bn-name">ほしいものガイド</span><span class="bn-sub">毎日の買い物を、もっと楽しく</span></span></a></header><p class="promo">このページには、広告（PR）が含まれています。</p></div>
@@ -238,6 +251,7 @@ function codeBlock(it){const out=[];
  const okc=out.filter(o=>o.r.ok).map(o=>o.c).join(""),hi=/<img\b(?![^>]*\b(?:width|height)\s*=\s*["']?1["'\s>])[^>]*>/i.test(okc),ht=/<a\b[^>]*>\s*[^<\s][^<]*<\/a>/i.test(okc),w=hi&&ht?"画像か商品名":hi?"画像":ht?"商品名":"";
  return (w?`<p class="go">${w}を押すと、楽天市場の商品ページが別の画面で開きます。</p>`:"")+out.map(o=>o.r.ok?`<div class="rk">${o.c}</div>`:`<p class="rkng">この商品のリンクを表示できません。${esc(o.r.why)}。</p>`).join("")}
 
+function goTo(id){const e=document.getElementById(id);if(!e)return false;const t=e.querySelector&&e.querySelector(".ct")||e;t.scrollIntoView({behavior:"smooth",block:"start"});if(e.classList.contains("card")){e.classList.remove("hit");void e.offsetWidth;e.classList.add("hit")}return false}
 function toggleMore(b){const c=b.closest(".card"),p=c.querySelector(".clamp"),m=c.querySelector(".more-body"),y0=p.getBoundingClientRect().top,o=p.classList.toggle("open");if(m)m.hidden=!o;b.textContent=o?"閉じる":"続きを読む";b.setAttribute("aria-expanded",o?"true":"false");
  if(o){try{b.blur()}catch(e){}const fix=()=>{const d=p.getBoundingClientRect().top-y0;if(Math.abs(d)>1)window.scrollBy(0,d)};fix();requestAnimationFrame(()=>{fix();setTimeout(fix,120);setTimeout(fix,400)})}
  else c.scrollIntoView({block:"nearest"})}
@@ -329,13 +343,14 @@ function route0(hh){setMode(true);
  if(h==="/about"||h==="/contact"){document.title="運営者情報｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}<h1 class="ttl">運営者情報</h1><dl class="info"><dt>運営者</dt><dd>地域情報室</dd><dt>サイト名</dt><dd>ほしいものガイド</dd><dt>個人情報について</dt><dd>個人運営につき、現在の世情から個人情報は記載していません。</dd></dl>${FORM}${ABAR(1)}</div>`;initForm();if(h==="/contact")document.getElementById("cform").scrollIntoView();return}
  const tagT=c=>`<a class="ctag" href="#/cat/${c}"><span aria-hidden="true">${CATI[c]}</span>${esc(CATN[c])}</a>`;
  const NOTE=`<p class="adnote">掲載している商品のリンク先は広告（アフィリエイト）です。購入はご自身の判断と責任でお願いします。運営者は一切責任を負いません。</p>`;
- const card=it=>`<article class="card">${tagT(it.cat)}<h3 class="ct" style="color:var(--c${it.cat%6})"><span class="ctx">${esc(it.title)}</span><span class="prl">PR</span></h3><p class="text clamp">${esc(it.text)}</p><div class="more-body" hidden>${codeBlock(it)}</div><button type="button" class="more-btn" aria-expanded="false" onclick="toggleMore(this)">続きを読む</button></article>`;
+ const card=it=>`<article class="card" id="p-${it.id}">${tagT(it.cat)}<h3 class="ct" style="color:var(--c${it.cat%6})"><span class="ctx">${esc(it.title)}</span><span class="prl">PR</span></h3><p class="text clamp">${esc(it.text)}</p><div class="more-body" hidden>${codeBlock(it)}</div><button type="button" class="more-btn" aria-expanded="false" onclick="toggleMore(this)">続きを読む</button><a class="totoc" href="#toc" onclick="goTo('toc');return false">↑ 商品の見出し一覧に戻る</a></article>`;
  const cnt=c=>ITEMS.filter(x=>x.cat===c).length;
+ const tocLi=li=>`<ul class="toc-l">${li.map(x=>`<li><a href="#p-${x.id}" onclick="return goTo('p-${x.id}')" style="color:var(--c${x.cat%6})">${esc(x.title)}</a></li>`).join("")}</ul>`;
  const chips=`<section class="cats" id="cats"><h2 class="lh">カテゴリから探す</h2><div class="chips">${CATN.map((n,c)=>{const k=cnt(c);if(c===OTHER&&!k)return"";return `<a class="chip${k?"":" zero"}" href="#/cat/${c}"><span class="ci" aria-hidden="true">${CATI[c]}</span><span class="cn">${esc(n).replace(/・/g,"・<wbr>")}<small>${k?k+"件":"準備中"}</small></span></a>`}).join("")}</div></section>`;
  const mc=h.match(/^\/cat\/(\d+)/);
  if(mc){const c=+mc[1];if(!(c>=0&&c<CATN.length)){location.hash="#/";return}
   const li=ITEMS.filter(x=>x.cat===c);document.title=CATN[c]+"｜ほしいものガイド";
-  app.innerHTML=`<div class="w">${bar(false)}<h1 class="cath"><span aria-hidden="true">${CATI[c]}</span>${esc(CATN[c])}</h1><p class="catc">${li.length?li.length+"件の商品があります。":"このカテゴリの商品は、ただいま準備中です。"}</p>${li.length?NOTE:""}<div class="cards">${li.map(card).join("")}</div>${chips}${bar(false,1)}</div>`;return}
+  app.innerHTML=`<div class="w">${bar(false)}<h1 class="cath"><span aria-hidden="true">${CATI[c]}</span>${esc(CATN[c])}</h1><p class="catc">${li.length?li.length+"件の商品があります。":"このカテゴリの商品は、ただいま準備中です。"}</p>${li.length?`<section class="toc" id="toc"><h2 class="lh">商品の見出し一覧</h2><p class="toc-h">見出しを押すと、下の本文のその見出しまで移動します。</p>${tocLi(li)}</section>`:""}${li.length?NOTE:""}<div class="cards">${li.map(card).join("")}</div>${chips}${bar(false,1)}</div>`;return}
  if(!ITEMS.length){app.innerHTML=`<div class="w"><p class="empty">掲載準備中です。</p>${chips}</div>`;return}
  const m=h.match(/^\/item\/(.+)/),it=m&&ITEMS.find(i=>i.id===m[1]);
  if(it){setMode(true);document.title=it.title+"｜ほしいものガイド";
@@ -346,7 +361,8 @@ function route0(hh){setMode(true);
   ${chips}${bar(false,1,"list","見出し一覧へ")}</div>`;return}
  setMode(false);document.title="ほしいものガイド";
  const groups=CATN.map((n,c)=>({c,li:ITEMS.filter(x=>x.cat===c)})).filter(g=>g.li.length);
- app.innerHTML=`<div class="w">${INTRO}${chips}${NOTE}
+ const toc=`<section class="toc" id="toc"><h2 class="lh">商品の見出し一覧</h2><p class="toc-h">見出しを押すと、下の本文のその見出しまで移動します。</p>${tocLi(groups.flatMap(g=>g.li))}</section>`;
+ app.innerHTML=`<div class="w">${INTRO}${chips}${toc}${NOTE}
  ${groups.map(g=>`<section class="grp"><div class="gh"><h2 style="color:var(--c${g.c%6})"><span aria-hidden="true">${CATI[g.c]}</span>${esc(CATN[g.c])}</h2><a href="#/cat/${g.c}">このカテゴリだけ見る</a></div><div class="cards">${g.li.map(card).join("")}</div></section>`).join("")}
  ${MORE}${bar(true,1)}</div>`}
 function route(hh){route0(hh);try{initMore()}catch(e){}}
