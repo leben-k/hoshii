@@ -31,7 +31,7 @@ a:focus-visible{outline:3px solid #f2b705;outline-offset:2px}
 .item h1{margin:0;font-size:20px;font-weight:700;line-height:1.6}
 .pr{margin-left:8px;padding:1px 7px;border-radius:3px;background:var(--soft);color:var(--sub);font-size:11px;font-weight:400;vertical-align:middle}
 .text{margin:14px 0 0;line-height:1.95;white-space:pre-wrap}
-.item img{display:block;width:300px;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;background:var(--soft);margin:18px auto 0}
+
 .btn{display:block;width:300px;max-width:100%;margin:20px auto 12px;padding:14px;background:var(--tx);color:var(--bg);text-align:center;font-size:15px;font-weight:700;border-radius:6px}
 .note{color:var(--sub);font-size:13px;line-height:1.85;margin:0}
 .lh{margin:44px 0 0;color:var(--sub);font-size:13px}
@@ -55,7 +55,7 @@ a:focus-visible{outline:3px solid #f2b705;outline-offset:2px}
 .lp ul,.lp ol{margin:10px 0 0;padding-left:1.4em;line-height:1.95}.lp li{margin-top:4px}
 .lp details{margin-top:10px}.lp summary{cursor:pointer;padding:6px 0;font-weight:700;line-height:1.7}
 .lp .thx{margin-top:36px;color:var(--sub);font-size:14px;text-align:center}
-.ck{margin-top:20px;line-height:1.8;word-break:break-all}.ck img{display:block;width:120px;height:120px;object-fit:cover;margin:8px 0 2px;background:var(--soft)}.ck span{display:block;font-weight:700}.ck small{display:block;color:var(--sub);font-size:12px;line-height:1.6}
+.ck{margin-top:20px;line-height:1.8;word-break:break-all}.ck>span{display:block;font-weight:700}.ck small{display:block;color:var(--sub);font-size:12px;line-height:1.6}
 .empty{margin:40px 0;color:var(--sub)}
 footer{margin-top:48px;padding:0 0 48px;color:var(--sub);font-size:13px;line-height:1.95}
 footer a{color:var(--tx);font-weight:700;text-decoration:underline;text-underline-offset:3px}
@@ -143,7 +143,7 @@ html.inner .bn-sub{display:none}
 .more-btn{display:inline-block;margin:8px 0 0;padding:4px 0;border:0;background:none;color:#0a7cbf;font:inherit;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .more-btn::after{content:" ▼";font-size:11px}
 .more-btn[aria-expanded="true"]::after{content:" ▲"}
-.card img{display:block;width:300px;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;background:var(--soft);margin:16px auto 0}
+
 .ctag{display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:999px;background:#e7f4fb;color:#0a6fa8;font-size:12px;font-weight:700;line-height:1.5;text-decoration:none}
 .item .ctag{margin-bottom:8px}
 .cath{margin:22px 0 0;font-size:22px;line-height:1.5}
@@ -152,9 +152,22 @@ html.inner .bn-sub{display:none}
 @media(min-width:900px){.ct{font-size:20px}.gh h2{font-size:21px}.cath{font-size:26px}}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .card{border-color:#333}:root:not([data-theme="light"]) .ctag{background:#16303f;color:#7cc8ef}:root:not([data-theme="light"]) .chip,:root:not([data-theme="light"]) .gh a,:root:not([data-theme="light"]) .more-btn{color:#5cc2f2;border-color:#5cc2f2}}
 :root[data-theme="dark"] .card{border-color:#333}:root[data-theme="dark"] .ctag{background:#16303f;color:#7cc8ef}:root[data-theme="dark"] .chip,:root[data-theme="dark"] .gh a,:root[data-theme="dark"] .more-btn{color:#5cc2f2;border-color:#5cc2f2}
+.promo{margin:12px 0 0;padding:8px 12px;border:2px solid #c2255c;border-radius:10px;background:#fff4f7;color:#7a1238;font-size:14px;font-weight:700;line-height:1.6;text-align:center}
+.prl{display:inline-block;padding:2px 10px;border-radius:6px;background:#c2255c;color:#fff;font-size:13px;font-weight:700;line-height:1.6;vertical-align:middle}
+.ct .prl,.item h1 .prl{margin-left:8px}
+.go{margin:16px 0 0;font-size:14px;font-weight:700;line-height:1.7}
+.rk{margin:8px 0 0;overflow-x:auto;text-align:center}
+.rk *{box-sizing:content-box}
+.rk a{color:revert;text-decoration:revert}
+.rk+.rk{margin-top:10px}
+.rkph{margin:8px 0 0;padding:20px;border:2px dashed var(--soft);border-radius:8px;color:var(--sub);text-align:center}
+.rkng{margin:8px 0 0;padding:12px;border:2px solid #e8590c;border-radius:8px;color:var(--tx);font-size:14px}
+.card{padding-bottom:16px}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .promo{background:#3a1724;color:#ffd0de;border-color:#ff7aa2}}
+:root[data-theme="dark"] .promo{background:#3a1724;color:#ffd0de;border-color:#ff7aa2}
 </style></head><body>
 <div class="sheet"><div class="w"><header class="bn"><a class="bn-in" href="#/" aria-label="ほしいものガイド（ホームへ）"><svg class="bn-art" viewBox="0 0 420 200" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g fill="#fff" opacity=".75"><ellipse cx="40" cy="40" rx="28" ry="10"/><ellipse cx="60" cy="33" rx="18" ry="9"/><ellipse cx="382" cy="46" rx="30" ry="11"/><ellipse cx="362" cy="38" rx="18" ry="9"/></g><path d="M0 168C70 150 140 178 210 165S350 152 420 168V200H0z" fill="#ffe3ec"/><path d="M0 184C80 170 150 194 230 182S360 172 420 186V200H0z" fill="#ffcfdd"/><g fill="none" stroke="#9c8a80" stroke-width="1.4" stroke-linecap="round"><path d="M46 113q-5 30 4 58"/><path d="M70 105q5 34-3 66"/><path d="M352 110q-5 30 4 60"/><path d="M376 102q5 34-2 66"/></g><ellipse cx="46" cy="94" rx="15" ry="19" fill="#ff7fa1"/><ellipse cx="41" cy="88" rx="3" ry="6" fill="#fff" opacity=".5"/><ellipse cx="70" cy="86" rx="14" ry="18" fill="#ffd43b"/><ellipse cx="65" cy="80" rx="3" ry="5" fill="#fff" opacity=".5"/><ellipse cx="352" cy="92" rx="15" ry="19" fill="#74c0fc"/><ellipse cx="347" cy="86" rx="3" ry="6" fill="#fff" opacity=".5"/><ellipse cx="376" cy="84" rx="14" ry="18" fill="#8fd19e"/><ellipse cx="371" cy="78" rx="3" ry="5" fill="#fff" opacity=".5"/><path d="M14 132h50l6 54H8z" fill="#ff9db8"/><path d="M27 132c0-17 24-17 24 0" fill="none" stroke="#d6336c" stroke-width="4" stroke-linecap="round"/><circle cx="29" cy="156" r="3" fill="#7a2a45"/><circle cx="49" cy="156" r="3" fill="#7a2a45"/><path d="M31 165q8 7 16 0" fill="none" stroke="#7a2a45" stroke-width="2.6" stroke-linecap="round"/><rect x="104" y="150" width="58" height="36" rx="5" fill="#5c9ce6"/><rect x="99" y="137" width="68" height="16" rx="4" fill="#3f86d9"/><rect x="126" y="137" width="14" height="49" fill="#ffd43b"/><path d="M133 137c-5-13-19-15-19-8 0 6 10 8 19 8zM133 137c5-13 19-15 19-8 0 6-10 8-19 8z" fill="#ffd43b"/><path d="M186 140h48l5 46h-58z" fill="#b197fc"/><path d="M199 140c0-15 22-15 22 0" fill="none" stroke="#6741d9" stroke-width="3.6" stroke-linecap="round"/><circle cx="202" cy="160" r="2.6" fill="#3b2a6b"/><circle cx="218" cy="160" r="2.6" fill="#3b2a6b"/><path d="M204 168q6 6 12 0" fill="none" stroke="#3b2a6b" stroke-width="2.4" stroke-linecap="round"/><path d="M262 138h46l5 48h-56z" fill="#8fd19e"/><path d="M274 138c0-14 22-14 22 0" fill="none" stroke="#2b8a3e" stroke-width="3.6" stroke-linecap="round"/><circle cx="277" cy="159" r="2.6" fill="#1f6b32"/><circle cx="293" cy="159" r="2.6" fill="#1f6b32"/><path d="M279 167q6 6 12 0" fill="none" stroke="#1f6b32" stroke-width="2.4" stroke-linecap="round"/><rect x="340" y="152" width="60" height="34" rx="5" fill="#ffa8c0"/><rect x="335" y="139" width="70" height="16" rx="4" fill="#ff7fa1"/><rect x="363" y="139" width="14" height="47" fill="#ffd43b"/><path d="M370 139c-5-13-19-15-19-8 0 6 10 8 19 8zM370 139c5-13 19-15 19-8 0 6-10 8-19 8z" fill="#ffd43b"/><g fill="#ffb700"><path d="M20 84l2.6 7 7 2.6-7 2.6-2.6 7-2.6-7-7-2.6 7-2.6z"/><path d="M404 96l2.4 6 6 2.4-6 2.4-2.4 6-2.4-6-6-2.4 6-2.4z"/><path d="M110 112l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M312 114l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g><path d="M246 116c-5-6-15 2-6 9l6 5 6-5c9-7-1-15-6-9z" fill="#ff6b8b"/><path d="M168 118c-4-5-12 1-5 7l5 4 5-4c7-6-1-12-5-7z" fill="#ff6b8b"/><g><rect x="150" y="104" width="8" height="4" rx="1" fill="#4dabf7" transform="rotate(30 154 106)"/><rect x="276" y="106" width="8" height="4" rx="1" fill="#f06595" transform="rotate(-25 280 108)"/><rect x="96" y="124" width="8" height="4" rx="1" fill="#51cf66" transform="rotate(50 100 126)"/><rect x="318" y="134" width="8" height="4" rx="1" fill="#fcc419" transform="rotate(20 322 136)"/><circle cx="206" cy="108" r="3.2" fill="#9775fa"/><circle cx="236" cy="132" r="3" fill="#f06595"/><circle cx="8" cy="118" r="3" fill="#4dabf7"/><circle cx="414" cy="130" r="3.2" fill="#51cf66"/></g></svg>
-<span class="bn-sign"><span class="bn-name">ほしいものガイド</span><span class="bn-sub">毎日の買い物を、もっと楽しく</span></span></a></header></div>
+<span class="bn-sign"><span class="bn-name">ほしいものガイド</span><span class="bn-sub">毎日の買い物を、もっと楽しく</span></span></a></header><p class="promo">本ページはプロモーションが含まれています</p></div>
 <main id="app"></main>
 <footer><div class="w">
 <p><b>【ご注意・免責事項】</b><br>当サイトはアフィリエイト広告を利用しています。掲載商品のご購入は、リンク先の販売サイトでお客様ご自身の判断と責任で行ってください。商品の品質・価格・在庫・サイズ感・配送・返品、その他購入に関するトラブルや損害について、運営者は一切の責任を負いません。掲載内容は変更・終了している場合があります。必ずリンク先で最新情報をご確認ください。</p>
@@ -170,7 +183,7 @@ const SAMPLE = [
 ["見出しの例2","誘導文の例です。"],
 ["見出しの例3","誘導文の例です。"],
 ["見出しの例4","誘導文の例です。"]
-].map((r,i)=>({id:"s"+i,title:r[0],text:r[1],img:"",url:"#",cat:10,catManual:false}));
+].map((r,i)=>({id:"s"+i,title:r[0],text:r[1],img:"",url:"#",codeLink:"",codeImg:"",cat:10,catManual:false}));
 function parseCSV(t){const rows=[];let r=[],c="",q=false;for(let i=0;i<t.length;i++){const ch=t[i];
  if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}
  else if(ch=='"')q=true;else if(ch==","){r.push(c);c=""}
@@ -208,6 +221,19 @@ function catOf(title,text,manual){
  CATS.forEach((c,i)=>{let sc=0;for(const k of c[2]){const w=k.length*(k.endsWith("用")?5:1);if(t.includes(k))sc+=w*3;if(x.includes(k))sc+=w}if(sc>score){score=sc;best=i}});
  return{c:best,manual:false}}
 let CATCOL=-1;
+const RK_TAGS=new Set(["a","img","br","table","tbody","thead","tr","td","th","div","p","span","b","strong","font","center","small"]);
+function checkCode(s){s=String(s||"").trim();if(!s)return{ok:false,empty:true,why:""};
+ if(!/<\s*(a|img)\b/i.test(s))return{ok:false,why:"楽天のリンクのコード（<a〜 や <img〜 で始まる文字）ではありません"};
+ for(const m of s.matchAll(/<\s*\/?\s*([a-zA-Z][a-zA-Z0-9]*)/g)){if(!RK_TAGS.has(m[1].toLowerCase()))return{ok:false,why:"使えない部品（"+m[1]+"）が入っています"}}
+ if(/\son[a-z]+\s*=/i.test(s)||/javascript:/i.test(s))return{ok:false,why:"安全でない書き方が入っています"};
+ for(const m of s.matchAll(/\s(?:href|src)\s*=\s*["']([^"']*)["']/gi)){const u=m[1].replace(/&amp;/g,"&");if(!/^https:\/\/([a-z0-9-]+\.)*rakuten\.(co\.jp|ne\.jp|com)(\/|$)/i.test(u))return{ok:false,why:"楽天以外のアドレスが入っています"}}
+ if(/[“”]/.test(s))return{ok:false,why:"引用符が「“ ”」に変わっています。楽天でコピーし直して貼ってください"};
+ return{ok:true}}
+function codeBlock(it){const out=[];
+ for(const c of [it.codeImg,it.codeLink]){if(!c||out.some(o=>o.c===c))continue;out.push({c,r:checkCode(c)})}
+ if(!out.length)return `<p class="rkph">（ここに楽天のリンクのコードが表示されます）</p>`;
+ return `<p class="go"><span class="prl">PR</span> 下のリンクから、楽天市場の商品ページに移動します。</p>`+out.map(o=>o.r.ok?`<div class="rk">${o.c}</div>`:`<p class="rkng">この商品のリンクを表示できません。${esc(o.r.why)}。</p>`).join("")}
+
 function toggleMore(b){const p=b.previousElementSibling,o=p.classList.toggle("open");b.textContent=o?"閉じる":"続きを読む";b.setAttribute("aria-expanded",o?"true":"false")}
 function initMore(){document.querySelectorAll(".clamp").forEach(p=>{const b=p.nextElementSibling;if(!b||!b.classList.contains("more-btn"))return;if(p.classList.contains("open")){b.hidden=false;return}const lh=parseFloat(getComputedStyle(p).lineHeight)||24;b.hidden=!(p.scrollHeight>p.clientHeight+lh*0.5)})}
 try{document.fonts&&document.fonts.ready.then(()=>{try{initMore()}catch(e){}})}catch(e){}
@@ -220,7 +246,7 @@ let LOADED=false,RAW=[];
 function imgFromRaw(raw,p){if(!raw)return p.img;const t=parseCode(raw);if(t.img)return t.img;
  if(!/<a\b|<img\b|href\s*=/i.test(raw)){const m=raw.replace(/[“”＂]/g,'"').match(/(?:https?:)?\/\/[^\s"'<>]+/);if(m)return fixImg(m[0].replace(/&amp;/g,"&"))}
  return p.img}
-function rowItem(r,i){const p=parseCode(r[4]),raw=(r[5]||"").trim(),img=imgFromRaw(raw,p),k=catOf(r[2],r[3],CATCOL>=0?r[CATCOL]:"");return{id:"i"+i,title:r[2],text:r[3]||"",img,url:p.url!=="#"?p.url:(/<a\s/i.test(raw)?parseCode(raw).url:"#"),cat:k.c,catManual:k.manual}}
+function rowItem(r,i){const k=catOf(r[2],r[3],CATCOL>=0?r[CATCOL]:"");return{id:"i"+i,title:r[2],text:r[3]||"",codeLink:(r[4]||"").trim(),codeImg:(r[5]||"").trim(),cat:k.c,catManual:k.manual}}
 async function load(){
  if(SHEET_CSV_URL){try{const res=await fetch(SHEET_CSV_URL,{cache:"no-store"});if(!res.ok)throw new Error("HTTP "+res.status);const all=parseCSV((await res.text()).replace(/^\uFEFF/,"")),rows=all.slice(1);CATCOL=(all[0]||[]).findIndex(h=>/カテゴリ/.test(String(h)));RAW=rows;
   ITEMS=rows.map((r,i)=>({r,i})).filter(({r})=>r[2]&&!/^(×|x|非公開)$/i.test((r[1]||"").trim())).map(({r,i})=>rowItem(r,i));
@@ -266,7 +292,7 @@ const SCENES=[
 ["大切な人への贈り物に","相手の好みや暮らしを思い浮かべながら、じっくり選べます。"],
 ["まとめ買いをしたいときに","飲み物や日用品のように、重くて何度も使うものは、ネットでまとめて注文すると楽です。"]];
 const FAQ=[
-["このサイトで、商品を買えますか？","当サイトでは購入の手続きはできません。「商品ページを見る」を押すと、楽天市場の商品ページに移ります。購入は、そちらでお手続きください。"],
+["このサイトで、商品を買えますか？","当サイトでは購入の手続きはできません。商品の画像や商品名のリンクを押すと、楽天市場の商品ページに移ります。購入は、そちらでお手続きください。"],
 ["価格や在庫は、いつも同じですか？","価格や在庫、送料は、変わることがあります。ご購入の前に、必ずリンク先の商品ページで、最新の情報をご確認ください。"],
 ["このサイトを使うのに、お金はかかりますか？","いいえ、無料でご覧いただけます。リンクから購入されると、運営者に紹介料が入ることがありますが、お客さまのお支払いが増えることはありません。"],
 ["紹介している内容は、いつも最新ですか？","掲載したあとで、商品の価格や仕様、販売の状況が変わることがあります。最新の情報は、リンク先の商品ページでご確認ください。"],
@@ -283,7 +309,7 @@ const MORE=`<div class="lp"><h2>ネットで買い物する、8つのいいと�
 <h2>商品が届いたあとのこと</h2><p>商品が届いたら、まず中身を確認しましょう。傷や、注文と違うところがあれば、早めにお店へ連絡するのが安心です。返品や交換には期限があることが多いので、箱や説明書、保証書は、しばらく取っておきましょう。</p>
 <h2>ギフトを選ぶときのヒント</h2>${LI(["相手の好みや、暮らしぶりを思い浮かべてみましょう。","予算と、相手が受け取りやすい大きさや量を考えましょう。","食べものは、日持ちや、お届けの日にちも確かめましょう。","包装やメッセージカードに対応しているかは、お店によって違います。"])}
 <h2>買い物で、ありがちな失敗</h2><h3>写真と、実物の印象が違った</h3><p>レビューに載っている、購入者の写真も見ておくと、実際の姿が分かりやすくなります。</p><h3>サイズが合わなかった</h3><p>手持ちの服や物のサイズを測って、商品の表と見比べてみましょう。</p><h3>送料に、あとから気づいた</h3><p>商品の価格だけで決めず、合計金額まで見てから注文しましょう。</p><h3>つい買いすぎてしまった</h3><p>気になる商品は、いったんカートに入れて、ひと晩おいてみるのもおすすめです。</p>
-<h2>このサイトの使い方</h2><ol><li>「カテゴリから探す」で、気になるカテゴリを選びます。ホームの一覧から探すこともできます。</li><li>紹介文の「続きを読む」を押すと、全文が開きます。見出しを押すと、その商品だけのページが開きます。</li><li>気に入ったら「商品ページを見る」を押して、楽天市場のページへ。価格や在庫を確かめて、ご自身で購入をお決めください。</li></ol>
+<h2>このサイトの使い方</h2><ol><li>「カテゴリから探す」で、気になるカテゴリを選びます。ホームの一覧から探すこともできます。</li><li>紹介文の「続きを読む」を押すと、全文が開きます。見出しを押すと、その商品だけのページが開きます。</li><li>気に入ったら、商品の画像や商品名のリンクを押して、楽天市場のページへ。価格や在庫を確かめて、ご自身で購入をお決めください。</li></ol>
 <h2>このサイトについて</h2><p>「ほしいものガイド」は、気になる商品を、見出しと紹介文でまとめて紹介する、個人運営のサイトです。楽天市場の商品を扱っており、アフィリエイト広告を利用しています。掲載している内容は、変わることがあります。</p>
 <h2>よくあるご質問</h2>${FAQ.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}
 <p class="thx">ここまで読んでいただき、ありがとうございます。ほしいものが見つかったら、うれしいです。ときどき、のぞきに来てください。</p></div>`;
@@ -291,14 +317,13 @@ function setMode(inner){try{document.documentElement.classList.toggle("inner",!!
 try{setMode(!!(location.hash.replace(/^#\/?$/,"")||document.getElementById("app").dataset.item))}catch(e){}
 function route0(hh){setMode(true);
  const h=(typeof hh==="string"&&hh)||location.hash.slice(1)||"/",app=document.getElementById("app");window.scrollTo(0,0);
- if(h==="/check"){document.title="表示チェック｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}<h1 class="ttl">表示チェック</h1><p class="note">スプレッドシートの各行を、サイトがどう読み取ったかを表示します。画像が出ない行は、ここで原因が分かります。</p>${RAW.length?RAW.map((r,i)=>{if(!r[2])return"";const it=rowItem(r,i),hid=/^(×|x|非公開)$/i.test((r[1]||"").trim());return `<div class="ck"><b>${i+2}行目：${esc(it.title)}</b>${hid?"（非公開の行）":""}<br>カテゴリ：${esc(CATN[it.cat])}${it.catManual?"（スプレッドシートで指定）":"（自動で振り分け）"}<br>商品ページへのリンク：${safeUrl(it.url)!=="#"?"取り出せました":"取り出せません"}<br>画像のアドレス：${it.img?"取り出せました":"取り出せません。「画像URL」の欄に画像のコードかアドレスを入れてください"}${it.img?`<img src="${esc(safeUrl(it.img))}" referrerpolicy="no-referrer" width="120" height="120" onload="this.nextElementSibling.textContent='画像の表示：できました'" onerror="this.nextElementSibling.textContent='画像の表示：できませんでした。アドレスは取り出せましたが、画像を読み込めません'"><span>画像の表示：確認中</span><small>${esc(it.img)}</small>`:""}</div>`}).join(""):`<p class="note">スプレッドシートを読み込めていません。</p>`}${ABAR(1)}</div>`;return}
+ if(h==="/check"){document.title="表示チェック｜ほしいものガイド";const st=c=>{if(!c)return"空欄";const r=checkCode(c);return r.ok?"そのまま表示できます":"表示できません（"+r.why+"）"};
+  app.innerHTML=`<div class="w">${ABAR()}<h1 class="ttl">表示チェック</h1><p class="note">スプレッドシートの各行を、サイトがどう読み取ったかを表示します。楽天のコードは、貼られたとおりに表示します。</p>${RAW.length?RAW.map((r,i)=>{if(!r[2])return"";const it=rowItem(r,i),hid=/^(×|x|非公開)$/i.test((r[1]||"").trim());return `<div class="ck"><b>${i+2}行目：${esc(it.title)}</b>${hid?"（非公開の行）":""}<br>カテゴリ：${esc(CATN[it.cat])}${it.catManual?"（スプレッドシートで指定）":"（自動で振り分け）"}<br>楽天のコード（E列）：${st(it.codeLink)}<br>画像URL（F列）：${st(it.codeImg)}${codeBlock(it)}</div>`}).join(""):`<p class="note">スプレッドシートを読み込めていません。</p>`}${ABAR(1)}</div>`;return}
  if(h==="/privacy"){document.title="プライバシーポリシー｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}${POLICY}${ABAR(1)}</div>`;return}
  if(h==="/about"||h==="/contact"){document.title="運営者情報｜ほしいものガイド";app.innerHTML=`<div class="w">${ABAR()}<h1 class="ttl">運営者情報</h1><dl class="info"><dt>運営者</dt><dd>地域情報室</dd><dt>サイト名</dt><dd>ほしいものガイド</dd><dt>個人情報について</dt><dd>個人運営につき、現在の世情から個人情報は記載していません。</dd></dl>${FORM}${ABAR(1)}</div>`;initForm();if(h==="/contact")document.getElementById("cform").scrollIntoView();return}
- const imgT=it=>`<img src="${esc(it.img?safeUrl(it.img):BLANK)}" alt="${esc(it.title)}" width="300" height="300" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this)">`;
- const buyT=it=>`<a class="btn" href="${esc(safeUrl(it.url))}" target="_blank" rel="sponsored noopener">商品ページを見る</a>`;
  const tagT=c=>`<a class="ctag" href="#/cat/${c}"><span aria-hidden="true">${CATI[c]}</span>${esc(CATN[c])}</a>`;
  const NOTE=`<p class="adnote">掲載している商品のリンク先は広告（アフィリエイト）です。購入はご自身の判断と責任でお願いします。運営者は一切責任を負いません。</p>`;
- const card=it=>`<article class="card">${tagT(it.cat)}<h3 class="ct"><a href="#/item/${it.id}" style="color:var(--c${it.cat%6})">${esc(it.title)}</a><span class="pr">PR</span></h3><p class="text clamp">${esc(it.text)}</p><button type="button" class="more-btn" hidden aria-expanded="false" onclick="toggleMore(this)">続きを読む</button>${imgT(it)}${buyT(it)}</article>`;
+ const card=it=>`<article class="card">${tagT(it.cat)}<h3 class="ct"><a href="#/item/${it.id}" style="color:var(--c${it.cat%6})">${esc(it.title)}</a><span class="prl">PR</span></h3><p class="text clamp">${esc(it.text)}</p><button type="button" class="more-btn" hidden aria-expanded="false" onclick="toggleMore(this)">続きを読む</button>${codeBlock(it)}</article>`;
  const cnt=c=>ITEMS.filter(x=>x.cat===c).length;
  const chips=`<section class="cats" id="cats"><h2 class="lh">カテゴリから探す</h2><div class="chips">${CATN.map((n,c)=>{const k=cnt(c);if(c===OTHER&&!k)return"";return `<a class="chip${k?"":" zero"}" href="#/cat/${c}"><span class="ci" aria-hidden="true">${CATI[c]}</span><span class="cn">${esc(n).replace(/・/g,"・<wbr>")}<small>${k?k+"件":"準備中"}</small></span></a>`}).join("")}</div></section>`;
  const mc=h.match(/^\/cat\/(\d+)/);
@@ -310,7 +335,7 @@ function route0(hh){setMode(true);
  if(it){setMode(true);document.title=it.title+"｜ほしいものガイド";
   const same=ITEMS.filter(x=>x!==it&&x.cat===it.cat);
   app.innerHTML=`<div class="w">${bar(false,0,"list","見出し一覧へ")}
-  <article class="item">${tagT(it.cat)}<h1 style="color:var(--c${it.cat%6})">${esc(it.title)}<span class="pr">PR</span></h1><p class="text">${esc(it.text)}</p>${imgT(it)}${buyT(it)}<p class="note">リンク先は広告（アフィリエイト）です。購入はご自身の判断と責任でお願いします。運営者は一切責任を負いません。</p></article>
+  <article class="item">${tagT(it.cat)}<h1 style="color:var(--c${it.cat%6})">${esc(it.title)}<span class="prl">PR</span></h1><p class="text">${esc(it.text)}</p>${codeBlock(it)}<p class="note">リンク先は広告（アフィリエイト）です。購入はご自身の判断と責任でお願いします。運営者は一切責任を負いません。</p></article>
   <h2 class="lh" id="list">「${esc(CATN[it.cat])}」の見出し一覧</h2>${same.length?`<nav class="hl">${same.map(x=>`<a href="#/item/${x.id}" style="color:var(--c${x.cat%6})">${esc(x.title)}</a>`).join("")}</nav>`:`<p class="catc">このカテゴリの、ほかの商品はまだありません。</p>`}
   ${chips}${bar(false,1,"list","見出し一覧へ")}</div>`;return}
  setMode(false);document.title="ほしいものガイド";
